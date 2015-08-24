@@ -1,0 +1,9 @@
+{
+    name: "Artfound",
+    version: "0.1.0",
+
+    description: "Progetto per Artfound Trust, per sharing di eventi e vendita pubblicazioni",
+    homepage: "http://www.artfoundtrust.com",
+
+    license: "Aladdin",
+}
