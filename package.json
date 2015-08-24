@@ -1,9 +1,25 @@
 {
-    name: "Artfound",
-    version: "0.1.0",
+    "name": "Artfound",
+    "version": "0.1.0",
 
-    description: "Progetto per Artfound Trust, per sharing di eventi e vendita pubblicazioni",
-    homepage: "http://www.artfoundtrust.com",
+    "description": "Progetto per Artfound Trust, per sharing di eventi e vendita pubblicazioni",
+    "homepage": "http://www.artfoundtrust.com",
 
-    license: "Aladdin",
+    "license": "Aladdin",
+
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fontatech/artfound.git"
+    },
+
+    "dependencies": {
+        "gulp": "latest",
+        "gulp-coffee": ">= 0.9",
+        "gulp-for-compass": "latest",
+        "gulp-htmlmin": "latest"
+    },
+
+    "files": [
+        "README"
+    ]
 }
