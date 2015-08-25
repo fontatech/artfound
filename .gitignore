@@ -1,4 +1,6 @@
 #exclude build and sass cache dirs
-/build
+/build/css
+/build/js
+/build/*.html
 /.sass-cache
 /node_modules

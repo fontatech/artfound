@@ -16,7 +16,9 @@
         "gulp": "latest",
         "gulp-coffee": ">= 0.9",
         "gulp-for-compass": "latest",
-        "gulp-htmlmin": "latest"
+        "gulp-htmlmin": "latest",
+        "gulp-concat": "latest",
+        "gulp-uglify": "latest"
     },
 
     "files": [
