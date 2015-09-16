@@ -1,11 +1,14 @@
 window.app = {}
 
-app.router = Backbone.Router.extend(
+window.app.router = Backbone.Router.extend(
 
     routes:
         '': 'main'
         'eventi': 'events'
         'about': 'about'
+        'artisti': 'artisti'
+        'artista/:artista': 'artista'
+        'event/:evento': 'evento'
 
     initialize: () ->
         Backbone.history.start(
@@ -21,9 +24,12 @@ app.router = Backbone.Router.extend(
             remove()
             complete()
             $(document.body).css 'height', $('#app-container').css 'height'
-            $('.main-menu a[href="' + location.pathname + '"').addClass 'active'
+            $('.main-menu a[href="' + location.pathname + '"]').addClass 'active'
 
             setTimeout show, 100
+
+        $(document.body).scrollTo 0, {} =
+            duration: 600
 
         append()
         oldView.$el.removeClass 'visible' if oldView
@@ -48,7 +54,30 @@ app.router = Backbone.Router.extend(
         app.layout.setView new Thorax.Views['events'](model), {} =
             transition: this.transition
 
+    artisti: () ->
+        app.layout.setView new Thorax.Views['artisti'](), {} =
+            transition: this.transition
+
     about: () ->
         app.layout.setView new Thorax.Views['about'](), {} =
+            transition: this.transition
+
+    artista: (artista) ->
+        model =
+            model: new app.ArtistaModel({} =
+                id: artista
+            )
+
+        app.layout.setView new Thorax.Views['artista'](model), {} =
+            transition: this.transition
+
+    evento: (evento) ->
+        model =
+            model: new app.EventoModel({} =
+                id: evento
+            )
+            eventoId: evento
+
+        app.layout.setView new Thorax.Views['evento'](model), {} =
             transition: this.transition
 )

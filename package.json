@@ -18,7 +18,9 @@
         "gulp-for-compass": "latest",
         "gulp-htmlmin": "latest",
         "gulp-concat": "latest",
-        "gulp-uglify": "latest"
+        "gulp-uglify": "latest",
+        "gulp-watch": "latest",
+        "gulp-minify-html": "latest"
     },
 
     "files": [

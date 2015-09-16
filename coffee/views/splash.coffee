@@ -36,6 +36,7 @@ Thorax.View.extend(
             curr = that.$el.find('.element.on')
             setOther = () ->
                 curr.get(0).className = 'element'
+                curr.appendTo next.parent()
 
             if curr.next().is('div')
                 next = curr.next()
