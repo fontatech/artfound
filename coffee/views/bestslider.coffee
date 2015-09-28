@@ -84,4 +84,7 @@ Thorax.View.extend(
                 prnt.find('p').html id2.descrizione
                 prnt.find('.measure').html id2.misure
 
+                if id2.isDisponible
+                    this.$el.find('.bestslider .disponibility-inner').text id2.isDisponible
+
 )

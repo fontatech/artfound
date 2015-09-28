@@ -9,6 +9,9 @@ window.app.router = Backbone.Router.extend(
         'artisti': 'artisti'
         'artista/:artista': 'artista'
         'event/:evento': 'evento'
+        'pubblicazioni': 'pubblicazioni'
+        'contatto': 'contatto'
+        'opere-proprietarie': 'opere'
 
     initialize: () ->
         Backbone.history.start(
@@ -37,6 +40,35 @@ window.app.router = Backbone.Router.extend(
         $('#loader').addClass 'open'
         $('.main-menu a').removeClass 'active'
 
+        if app.isHome
+            app._goToNonHome()
+
+        setTimeout afterTimeout, 800
+
+    homeTransition: (newView, oldView, append, remove, complete) ->
+        afterTimeout = () ->
+            show = () ->
+                $('#app-container').removeClass 'padded-top'
+                $('#loader').removeClass 'open'
+                newView.$el.addClass 'visible' if newView
+            remove()
+            complete()
+            $(document.body).css 'height', (parseInt($('#homelateral').css 'height') + parseInt($('footer').css 'height'))
+            $('#main-container').css 'height', '2240px'
+            $('.main-menu a[href="' + location.pathname + '"]').addClass 'active'
+            app._goToHomeLayout()
+
+            setTimeout show, 100
+
+        $(document.body).scrollTo 0, {} =
+            duration: 600
+
+        append()
+        oldView.$el.removeClass 'visible' if oldView
+        $('#app-container').addClass 'padded-top'
+        $('#loader').addClass 'open'
+        $('.main-menu a').removeClass 'active'
+
         setTimeout afterTimeout, 800
 
     main: () ->
@@ -44,8 +76,11 @@ window.app.router = Backbone.Router.extend(
             splash = new Thorax.Views['splashscreenview']()
             splash.render()
 
-        app.layout.setView new Thorax.Views['index'](), {} =
-            transition: this.transition
+        model =
+            model: new app.HomepageModel()
+
+        app.layout.setView new Thorax.Views['index'](model), {} =
+            transition: this.homeTransition
 
     events: () ->
         model =
@@ -79,5 +114,26 @@ window.app.router = Backbone.Router.extend(
             eventoId: evento
 
         app.layout.setView new Thorax.Views['evento'](model), {} =
+            transition: this.transition
+
+
+    pubblicazioni: () ->
+        model =
+            model: new app.PubblicazioniModel()
+
+        app.layout.setView new Thorax.Views['pubblicazioni'](model), {} =
+            transition: this.transition
+
+    contatto: () ->
+        app.layout.setView new Thorax.Views['contatto'](), {} =
+            transition: this.transition
+
+
+
+    opere: () ->
+        model =
+            model: new app.OpereModel()
+
+        app.layout.setView new Thorax.Views['opere'](model), {} =
             transition: this.transition
 )

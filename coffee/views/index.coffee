@@ -1,7 +1,11 @@
 Thorax.View.extend(
     name: 'index',
     tagName: 'div',
-    className: 'view-class',
+    className: 'view-class homepage',
+    trad: null
 
-    template: Handlebars.compile('<h1>CIAO CIAO</h1>')
+    template: Handlebars.compile($('#homepage-layout').html())
+
+    initialize: () ->
+        this.trad = Translator.getTranslations()
 )

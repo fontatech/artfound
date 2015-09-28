@@ -1,6 +1,36 @@
 $.mockjax(
     url: '/api/translations',
     responseText: {"it":{
+        "richiedialtre": "Richiedi altre informazioni",
+        "artistitrust": "ARTISTI DELLE OPERE DEL TRUST",
+        "opereprop": "OPERE PROPRIETARIE",
+        "deltrust": "DEL TRUST",
+        "opereDescr":"Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.",
+        "hometitle": "BENVENUTI IN",
+        "opereprop": "OPERE PROPRIETARIE",
+        "operepropdesc": "Raccolta completa delle opere del Trust",
+        "cronologia": "CRONOLOGIA EVENTI",
+        "cronologiadesc": "Scopri gli ultimi eventi tenuti",
+        "homeDescr":"Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.",
+        "indirizzo": "INDIRIZZO E RECAPITI",
+        "registrazionedescription2": "La registrazione &egrave; gratuita, viene fatta solo una volta e consente a chi si sottoscrive di visitare su appuntamento la galleria",
+        "richiestacomunicazione": "Richiesta o comunicazione",
+        "nomecognome": "Nome e Cognome",
+        "invio": "Invio",
+        "rectelefonico": "Recapito telefonico",
+        "compilareicampi": "Compilare i campi qui che seguono",
+        "contatti": "CONTATTI",
+        "informazionigenerali": "INFORMAZIONI GENERALI",
+        "dataPubblicazione": "Data di pubblicazione",
+        "pubblicazioniufficiali": "PUBBLICAZIONI UFFICIALI",
+        "pubblicazioniDescr":"Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.",
+        "pubblicazioniPdf": 'PUBBLICAZIONI IN PDF',
+        "raccolteInVolumi": 'RACCOLTE IN VOLUMI',
+        "tutte": "TUTTE",
+        "copia": 'copia',
+        'consegna5giorni': 'Consegna entro 5 giorni lavorativi<br />tramite Corriere Espresso',
+        'acquistaOra': 'Acquista ora il volume',
+
         "chiudi": "Chiudi",
         "eventisalvati": "EVENTI CHE HAI SALVATO FINORA",
         "opereesposte": "OPERE ESPOSTE",
@@ -307,5 +337,105 @@ $.mockjax(
             {name: 'Manifesto', file: '/uploads/prova.docx'},
             {name: 'Press Release', file: '/uploads/prova.docx'},
             {name: 'Trascrizione integrale della Conversazione', file: '/uploads/prova.docx'}
+        ]
+)
+
+
+$.mockjax(
+    url: "/api/pubblicazioni"
+    responseText:
+        eventi: [
+            {
+                name: 'PER SOTTRAZIONE Intorno a Maurice Blanchot e la scrittura del disastro, tra frammentazione e ricostruzione a cura di Francesco Correggia',
+                edits: [
+                    {name: 'Manifesto', file: '/uplaods/prova.docx'},
+                    {name: 'Press Release', file: '/uplaods/prova.docx'},
+                    {name: 'Trascrizione integrale della Conversazione', file: '/uplaods/prova.docx'}
+                ]
+            },{
+                name: 'PER SOTTRAZIONE Intorno a Maurice Blanchot e la scrittura del disastro, tra frammentazione e ricostruzione a cura di Francesco Correggia',
+                edits: [
+                    {name: 'Manifesto', file: '/uplaods/prova.docx'},
+                    {name: 'Press Release', file: '/uplaods/prova.docx'},
+                    {name: 'Trascrizione integrale della Conversazione', file: '/uplaods/prova.docx'}
+                ]
+            },{
+                name: 'PER SOTTRAZIONE Intorno a Maurice Blanchot e la scrittura del disastro, tra frammentazione e ricostruzione a cura di Francesco Correggia',
+                edits: [
+                    {name: 'Manifesto', file: '/uplaods/prova.docx'},
+                    {name: 'Press Release', file: '/uplaods/prova.docx'},
+                    {name: 'Trascrizione integrale della Conversazione', file: '/uplaods/prova.docx'}
+                ]
+            }
+        ]
+
+        raccolte: [
+            {
+                title: 'Raccolta in volume rilegato',
+                subtitle: 'Volume completo di tutte le trascrizioni delle conversazioni, press release, foto delle opere trattate e descrizione degli artisti che sono statiesposti nei seguenti eventi:',
+                description: '<div class="evt-line">1. PER SOTTRAZIONE Intorno a Maurice Blanchot e la scrittura del disastro, tra frammentazione e ricostruzione a cura di Francesco Correggia</div><div class="evt-line">2. PER SOTTRAZIONE Intorno a Maurice Blanchot e la scrittura del disastro, tra frammentazione e ricostruzione a cura di Francesco Correggia</div><div class="evt-line">3. PER SOTTRAZIONE Intorno a Maurice Blanchot e la scrittura del disastro, tra frammentazione e ricostruzione a cura di Francesco Correggia</div>',
+                price: '120,00 EUR',
+                date: 'LUGLIO 2015',
+                img: '/img/about2.jpg'
+            }
+        ]
+)
+
+
+$.mockjax(
+    url: "/api/homepage"
+    responseText:
+        incorso:
+            permalink: '/event/per-sottrazione'
+            img: '/img/about3.jpg'
+            title: 'EVENT TITLE'
+            description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus."
+        futuro:
+            permalink: '/event/per-sottrazione'
+            img: '/img/about1.jpg'
+            title: 'NOME EVENTO FUTURO'
+            description: "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus."
+)
+
+$.mockjax(
+    url: "/api/opere-proprietarie"
+    responseText:
+        artisti: [
+            {name: "Mario Rossi", permalink: "/artista/mario-rossi"},
+            {name: "Mario Rossi 2", permalink: "/artista/mario-rossi"},
+            {name: "Mario Rossi 3", permalink: "/artista/mario-rossi"},
+        ]
+
+        opere: [
+            {
+                img: '/img/about1.jpg',
+                id: 1,
+                titolo: 'Titolo Opera',
+                artista: 'Artista 1',
+                descrizione: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labor    is nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                misure: '120cm x 200cm'
+                artpermalink: '/artista/mario-rossi'
+                isDisponible: 'NON DISPONIBILE'
+            },
+            {
+                img: '/img/prova1.jpg',
+                id: 2,
+                titolo: 'Titolo Opera 2',
+                artista: 'Artista r21',
+                descrizione: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labor    is nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                misure: '220cm x 200cm'
+                artpermalink: '/artista/mario-rossi-2'
+                isDisponible: 'DISPONIBILE PER L\'ACQUISTO'
+            },
+            {
+                img: '/img/about3.jpg',
+                id: 3,
+                titolo: 'Titolo Opera 3',
+                artista: 'Artista 3',
+                descrizione: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labor    is nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+                misure: '320cm x 200cm'
+                artpermalink: '/artista/mario-rossi-3'
+                isDisponible: 'DISPONIBILE PER IL PRESTITO'
+            }
         ]
 )

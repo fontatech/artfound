@@ -110,6 +110,22 @@ body, html {
 #main-container {
     width: 1000px;
     margin: 60px auto;
+    @include transition(all .5s $soniabezier);
+}
+
+body.is-home {
+    #main-container {
+        margin-left: 594px;
+        margin-right: 10px;
+    }
+
+    header .col-center {
+        width: 580px;
+    }
+
+    header .col-dx {
+        opacity: 0;
+    }
 }
 
 header {
@@ -618,6 +634,8 @@ footer {
 .separator {
     background-color: #d1d1d1;
     margin-bottom: 75px;
+    border: 0;
+    height: 1px;
 }
 
 .timeline-container {
@@ -1725,4 +1743,489 @@ footer {
     #download {
         display: none;
     }    
+}
+
+.view-class.pubblicazioni {
+    .pub-controls {
+        width: 100%;
+        text-align: right;
+        font-size: 13px;
+        color: #c1c1c1;
+        line-height: 100%;
+        margin-bottom: 20px;
+
+        .tipologia {
+            cursor: pointer;
+
+            &.active {
+                color: #4b4b4b;
+                cursor: default;
+            }
+        }
+    }
+
+    .separator {
+        margin-bottom: 62px;
+    }
+
+    .pubblicazione {
+        width: 100%;
+        border-bottom: 1px solid #d1d1d1;
+        @include opacity(0);
+        @include transition(all .3s $soniabezier);
+        overflow: hidden;
+        height: 0;
+
+        &.visible {
+            @include opacity(1);
+            padding-bottom: 58px;
+            margin-bottom: 62px;
+            height: auto;
+        }
+
+        h1 {
+            font-family: "LatoBlack";
+            font-size: 13px;
+            color: $description;
+            line-height: 150%;
+            width: 590px;
+        }
+
+        .downloads {
+            margin-top: 25px;
+            width: 100%;
+
+            a {
+                color: $description;
+                font-size: 13px;
+                text-decoration: underline;
+                line-height: 150%;
+                margin-right: 39px;
+            }
+        }
+    }
+
+    .raccolta {
+        width: 100%;
+        border-bottom: 1px solid #d1d1d1;
+        @include opacity(0);
+        @include transition(all .3s $soniabezier);
+        overflow: hidden;
+        height: 0;
+
+        &.visible {
+            @include opacity(1);
+            padding-bottom: 60px;
+            height: auto;
+        }
+
+        .col-sx {
+            width: 621px;
+            float: left;
+
+            h1 {
+                font-family: "LatoBlack";
+                font-size: 13px;
+                line-height: 150%;
+                color: $description;
+            }
+
+            p {
+                font-family: "LatoBlack";
+                color: $gold;
+                line-height: 150%;
+                font-size: 13px;
+                margin-bottom: 22px;
+            }
+
+            .descr {
+                margin-bottom: 22px;
+
+                .evt-line {
+                    font-family: "LatoBlack";
+                    font-size: 13px;
+                    line-height: 150%;
+                    margin-bottom: 22px;
+                    color: $description;
+                }
+            }
+
+            .pub-date {
+                line-height: 150%;
+                font-size: 13px;
+                color: $description;
+            }
+
+            .price {
+                margin-top: 17px;
+                text-decoration: underline;
+                color: $description;
+                font-family: "LatoBlack";
+                line-height: 150%;
+            }
+
+            .acquista {
+                cursor: pointer;
+                margin-top: 35px;
+                width: 232px;
+                height: 22px;
+                line-height: 22px;
+                text-align: center;
+                background-color: $gold;
+                color: #fff;
+                font-family: "BookAntiqua";
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 14px;
+            }
+        }
+
+        .col-dx {
+            width: 379px;
+            float: left;
+            padding-left: 156px;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.view-class.contatto {
+    .form-gen {
+        width: 814px;
+    }
+
+    .page-description.gen {
+        margin-bottom: 30px;
+    }
+
+    .gen-col1 {
+        width: 330px;
+        float: left;
+    }
+
+    .gen-col2 {
+        width: 484px;
+        float: left;
+    }
+
+    #gen-invio {
+        margin-top: 12px;
+        width: 100%;
+        text-align: right;
+        float: left;
+        margin-bottom: 58px;
+
+        a {
+            color: $description;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+    }
+
+    input {
+        padding-left: 2px;
+        color: #838383;
+        height:22px;
+        line-height: 22px;
+        width: 276px;
+        border: 1px solid #c8c8c8;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        width: 100%;
+        font-size: 13px;
+        color: $description;
+        line-height: 100%;
+        margin-bottom: 13px;
+    }
+
+    textarea {
+        height: 158px;
+        width: 100%;
+        border: 1px solid #c8c8c8;
+        padding: 2px;
+    }
+
+    .littletitle {
+        margin-bottom: 20px;
+    }
+
+
+    .col1 {
+        width: 380px;
+        height: 100%;
+        float: left;
+        padding-left: 40px;
+
+        .register-open {
+            color: $description;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+    }
+
+    .col2 {
+        width: 330px;
+        height: 100%;
+        float: left;
+        border-right: 1px solid #cecece;
+
+        label {
+            display: block;
+            width: 100%;
+            font-size: 13px;
+            color: $description;
+            line-height: 100%;
+            margin-bottom: 13px;
+        }
+
+        input {
+            padding-left: 2px;
+            color: #838383;
+            height:22px;
+            line-height: 22px;
+            width: 276px;
+            border: 1px solid #c8c8c8;
+            margin-bottom: 20px;
+        }
+
+        .do-login {
+            color: $description;
+            font-size: 14px;
+            text-decoration: underline;
+            width: 276px;
+            text-align: right;
+            margin-top: 11px;
+
+            span {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .form-reg {
+        margin-bottom: 65px;
+
+        h2 {
+            font-family: "BookAntiqua";
+            font-weight: bold;
+            color: $title;
+            font-size: 19px;
+            line-height: 100%;
+            margin-bottom: 32px;
+        }
+
+        p {
+            line-height: 150%;
+            color: $description;
+            font-size: 14px;
+            margin-bottom: 25px;
+
+            b {
+                font-family: "LatoBlack";
+            }
+        }
+    }
+
+    #map {
+        width: 810px;
+        height: 285px;
+        margin-bottom: 58px;
+    }
+
+
+    .indirizzodati {
+        width: 650px;
+        height: 100%;
+        float: left;
+        font-size: 13px;
+        line-height: 180%;
+        color: #434343;
+        margin-bottom: 52px;
+
+        a {
+            text-decoration: underline;
+            color: #434343;
+        }
+
+        .subcol-1 {
+            width: 184px;
+            height: 100%;
+            float: left;
+        }
+
+        .subcol-2 {
+            width: 215px;
+            height: 100%;
+            float: left;
+        }
+    }
+}
+
+.labels {
+    color: #91212e;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: left;
+    width: 100px;
+    white-space: nowrap;
+    margin-left: 30px;
+    @include transform(translate(32px, -7px));
+}
+
+#homelateral {
+    width: 377px;
+    height: 2360px;
+    position: fixed;
+    z-index: 1;
+    @include transition(all .5s $soniabezier);
+    @include transform(translate3d(-377px,0,0));
+    overflow: hidden;
+
+    &.open {
+        @include transform(translate3d(0,0,0));
+    }
+
+    .home-inner {
+        width: 100%;
+        height: 100%;
+        background-image: url(../img/homelato.jpg);
+        @include transform(scale(1.2) translate(0,0));
+    }
+}
+
+.view-class.homepage {
+    .incorso {
+        width: 100%;
+
+        .immage {
+            width: 100%;
+            height: 378px;
+            background-size: cover;
+        }
+
+        h5 {
+            margin-bottom: 66px;
+        }
+    }
+
+    .futuro {
+        width: 100%;
+
+        .immage {
+            width: 100%;
+            height: 208px;
+            background-size: cover;
+        }
+
+        .incorso-description {
+            margin-bottom: 66px;
+        }
+    }
+
+    .incorso-title {
+        font-family: "LatoBlack";
+        line-height: 100%;
+        font-size: 13px;
+        color: $description;
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+
+    .incorso-descr {
+        line-height: 180%;
+        font-size: 13px;
+        color: $description;
+        margin-bottom: 36px;
+        width: 436px;
+    }
+
+    .home-col1, .home-col2 {
+        display: block;
+        width: 410px;
+        float: left;
+        margin-bottom: 65px;
+        padding-right: 68px;
+
+        h4 {
+            font-family: "BookAntiqua";
+            font-weight: bold;
+            color: $title2;
+            font-size: 15px;
+            line-height: 100%;
+            margin-top: 24px;
+            margin-bottom: 20px;
+        }
+
+        h5 {
+            font-size: 13px;
+            color: $description;
+        }
+    }
+
+    .home-col2 {
+        width: 344px;
+    }
+}
+
+.view-class.opere {
+    .richiedi {
+        margin-top: 33px;
+        margin-bottom: 61px;
+        font-weight: bold;
+        font-size: 13px;
+        cursor: pointer;
+        display: block;
+        text-decoration: underline;
+        color: $description;
+    }
+
+    .artisti-cont {
+        width: 100%;
+        margin-bottom: 70px;
+
+        a {
+            display: block;
+            height: 24px;
+            width: 340px;
+            font-size: 13px;
+            color: $description;
+            text-decoration: underline;
+        }
+    }
+}
+
+.disponibility {
+    position: absolute;
+    height: 22px;
+    top: 514px;
+    right: 220px;
+
+    .disponibility-inner {
+        display: inline-block;
+        height: 22px;
+        line-height: 23px;
+        background-color: $gold;
+        padding: 0 10px;
+        color: #fff;
+        font-family: "BookAntiqua";
+        font-weight: bold;
+        font-size: 14px;
+        float: left;
+    }
+
+    .infopoint {
+        cursor: pointer;
+        width: 24px;
+        height: 22px;
+        background-color: #3f3f3f;
+        display: inline-block;
+        float: left;
+    }
 }

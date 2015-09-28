@@ -20,7 +20,8 @@
         "gulp-concat": "latest",
         "gulp-uglify": "latest",
         "gulp-watch": "latest",
-        "gulp-minify-html": "latest"
+        "gulp-minify-html": "latest",
+        "gulp-html-tag-include": "latest"
     },
 
     "files": [

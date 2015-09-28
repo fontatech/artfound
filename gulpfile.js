@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     uglify  = require('gulp-uglify'),
     watch = require('gulp-watch'),
     minifyHTML = require('gulp-minify-html'),
+    htmlInclude = require('gulp-html-tag-include'),
     devdir  = 'build',
     proddir = 'prod',
     vendorlib = './coffee/vendor/';
@@ -31,6 +32,7 @@ gulp.task('default', function () {
         }));
 
     gulp.src('./templates/**/*.html')
+        .pipe(htmlInclude())
         .pipe(minifyHTML(minifyOpts))
         .pipe(gulp.dest('./' + devdir + '/'));
 
@@ -62,7 +64,8 @@ gulp.task('devel', function () {
             outputStyle: 'compressed'
         }));
 
-    gulp.src('./templates/**/*.html')
+    gulp.src('./templates/index.html')
+        .pipe(htmlInclude())
         .pipe(minifyHTML(minifyOpts))
         .pipe(gulp.dest('./' + devdir + '/'));
 });
@@ -72,7 +75,8 @@ gulp.task('look', function () {
     watch('./templates/**/*.html', function () {
         console.log('changed html');
 
-        gulp.src('./templates/**/*.html')
+        gulp.src('./templates/index.html')
+            .pipe(htmlInclude())
             .pipe(minifyHTML(minifyOpts))
             .pipe(gulp.dest('./' + devdir + '/'));
     });
