@@ -1,0 +1,53 @@
+<script type="text/x-handlebars-template" id="pubblicazioni">
+    <h1 class="page-title">{{trad.pubblicazioniufficiali}}<br /><span class="gold">ART FOUND TRUST</span></h1>
+    <h2 class="page-description">{{trad.pubblicazioniDescr}}</h2>
+
+    <div class="pub-controls">
+        <span class="tipologia active" data-val="ALL">{{trad.tutte}}</span> - 
+        <span class="tipologia" data-val="pubblicazione">{{trad.pubblicazioniPdf}}</span> - 
+        <span class="tipologia" data-val="raccolta">{{trad.raccolteInVolumi}}</span>
+    </div>
+
+    <hr class="separator" />
+
+    {{#eventi}}
+        <div class="pubblicazione visible">
+            <h1>{{name}}</h1>
+            <div class="downloads">
+                {{#edits}}
+                    <a href="{{file}}" target="_BLANK">{{name}}</a>
+                {{/edits}}
+            </div>
+        </div>
+    {{/eventi}}
+
+    {{#raccolte}}
+        <div class="raccolta visible">
+            <div class="col-sx">
+                <h1>{{title}}</h1>
+                <p>{{{subtitle}}}</p>
+
+                <div class="descr">{{{description}}}</div>
+
+                <div class="pub-date">
+                    {{../trad.dataPubblicazione}}<br />
+                    {{date}}
+                </div>
+
+                <div class="price">{{price}} /{{../trad.copia}}</div>
+                <div class="pub-date">
+                    {{{../trad.consegna5giorni}}}
+                </div>
+
+                <div class="acquista">{{../trad.acquistaOra}}</div>
+            </div>
+            <div class="col-dx">
+                <img src="{{img}}" />
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    {{/raccolte}}
+
+    <div class="clearfix"></div>
+</script>
+

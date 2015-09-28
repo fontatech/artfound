@@ -1,0 +1,103 @@
+<!-- @@master = index.html -->
+
+<!-- @@block = layout -->
+<script type="text/x-handlebars-template" id="layout">
+
+    <div id="homelateral">
+        <div class="home-inner"></div>
+    </div>
+
+    <div id="main-container">
+        <header>
+            <div class="col-sx">
+                <img src="/img/logo.svg" class="logo" />
+            </div>
+            <div class="col-center">
+                <nav class="main-menu">
+                    <a href="/">{{trad.home}}</a>
+                    <a href="/about">{{trad.about}}</a>
+                    <a href="/eventi">{{trad.eventi}}</a>
+                    <a href="/artisti">{{trad.artisti}}</a>
+                    <a href="/pubblicazioni">{{trad.pubblicazioni}}</a>
+                    <a href="/contatto">{{trad.contatto}}</a>
+                </nav>
+            </div>
+            <div class="col-dx">
+                {{loggedLayout isLogged trad.mieiEventi trad.logout trad.accedi}}
+                <!--<div class="accedi">Accedi</div>-->
+            </div>
+        </header>
+
+        <div id="pg-container">{{#layout-element}}{{/layout-element}}</div>
+
+        <nav class="consultazione">
+            <h1>CONSULTAZIONE & CONTATTI</h1>
+
+            <div class="row">
+                <div class="col1">
+                    <a href="" data-bypass class="ricerca">Ricerca artista o opera</a>
+                </div>
+                <div class="col2">
+                    <a href="" data-bypass class="popup-login">Login - Registrazione</a>
+                </div>
+                <div class="col3">
+                    <a href="/contatto">Visita la galleria</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col1">
+                    <a href="/opere-proprietarie">Opere proprietarie</a>
+                </div>
+                <div class="col2">
+                    <a href="/pubblicazioni">Pubblicazioni</a>
+                </div>
+                <div class="col3">
+                    <a href="/contatto">Contatto</a>
+                </div>
+            </div>
+
+            <div class="langs">
+                <span class="label">La tua lingua: </span>
+                <span class="lingua" data-value="en">English</span>
+                <span class="lingua" data-value="it">Italiano</span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <footer>
+        <div class="inner">
+            <div class="col1">
+                <img src="/img/logo.svg" />
+            </div>
+
+            <div class="col2">
+                <div class="subcol-1">
+                    Art Found Trust <br />
+                    Corso Venezia 44 <br />
+                    20121 Milano <br />
+                    P.IVA 00000000000
+                </div>
+                <div class="subcol-2">
+                    +39 02 000 0000<br />
+                    <a data-bypass href="mailto: info@artfoundtrust.com">info@artfoundtrust.com</a><br />
+                    <a data-bypass target="_BLANK" href="#">Google Maps</a><br />
+                    <a href="/privacy">Privacy</a>
+                </div>
+
+                <div class="subcol-3">
+                    <a data-bypass target="_BLANK" href="#">Facebook</a><br />
+                    <a data-bypass target="_BLANK" href="#">Linked-In</a><br />
+                    <a data-bypass target="_BLANK" href="#">Twitter</a><br />
+                </div>
+            </div>
+
+            <div class="col3">
+                <a target="_BLANK" data-bypass href="http://www.gbrdesign.com"><img src="/img/gbr.svg" /></a>
+            </div>
+        </div>
+    </footer>
+</script>
+<!-- @@close -->

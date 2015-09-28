@@ -1,0 +1,47 @@
+<script type="text/x-handlebars-template" id="homepage-layout">
+    <h1 class="page-title">{{trad.hometitle}}<br /><span class="gold">ART FOUND TRUST</span></h1>
+    <h2 class="page-description">{{trad.homeDescr}}</h2>
+
+    <hr class="separator" />
+
+    <h3>{{trad.eventoincorso}}</h3>
+
+    {{#incorso}}
+        <div class="incorso">
+            <a href="{{permalink}}">
+                <div class="immage" style="background-image: url({{img}})"></div>
+                <div class="incorso-title">{{title}}</div>
+                <div class="incorso-descr">{{description}}</div>
+            </a>
+        </div>
+    {{/incorso}}
+
+    <hr class="separator" />
+
+    {{#futuro}}
+        <div class="futuro">
+            <a href="{{permalink}}">
+                <div class="immage" style="background-image: url({{img}})"></div>
+                <div class="incorso-title">{{title}}</div>
+                <div class="incorso-descr">{{description}}</div>
+            </a>
+        </div>
+    {{/futuro}}
+
+    <a href="/opere-proprietarie" class="home-col1">
+        <img src="/img/opereprop.jpg" />
+        <h4>{{trad.opereprop}}</h4>
+        <h5>{{trad.operepropdesc}}</h5>
+    </a>
+
+    <a href="/eventi" class="home-col2">
+        <img src="/img/eventihome.jpg" />
+        <h4>{{trad.cronologia}}</h4>
+        <h5>{{trad.cronologiadesc}}</h5>
+    </a>
+
+    <div class="clearfix"></div>
+
+    <hr class="separator" />
+
+</script>

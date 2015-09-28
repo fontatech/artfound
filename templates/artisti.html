@@ -1,0 +1,54 @@
+<script type="text/x-handlebars-template" id="artisti">
+    <h1 class="page-title">{{trad.artistititle}}<br /><span class="gold">ART FOUND TRUST</span></h1>
+    <h2 class="page-description">{{trad.artistiDescr}}</h2>
+
+    <div class="select-artists">
+        <span class="select active" data-letter="ALL">{{trad.all}}</span> - 
+        <span class="select" data-letter="A">A</span> - 
+        <span class="select" data-letter="B">B</span> - 
+        <span class="select" data-letter="C">C</span> - 
+        <span class="select" data-letter="D">D</span> - 
+        <span class="select" data-letter="E">E</span> - 
+        <span class="select" data-letter="F">F</span> - 
+        <span class="select" data-letter="G">G</span> - 
+        <span class="select" data-letter="H">H</span> - 
+        <span class="select" data-letter="I">I</span> - 
+        <span class="select" data-letter="J">J</span> - 
+        <span class="select" data-letter="K">K</span> - 
+        <span class="select" data-letter="L">L</span> - 
+        <span class="select" data-letter="M">M</span> - 
+        <span class="select" data-letter="N">N</span> - 
+        <span class="select" data-letter="O">O</span> - 
+        <span class="select" data-letter="P">P</span> - 
+        <span class="select" data-letter="Q">Q</span> - 
+        <span class="select" data-letter="R">R</span> - 
+        <span class="select" data-letter="S">S</span> - 
+        <span class="select" data-letter="T">T</span> - 
+        <span class="select" data-letter="U">U</span> - 
+        <span class="select" data-letter="V">V</span> - 
+        <span class="select" data-letter="W">W</span> - 
+        <span class="select" data-letter="X">X</span> - 
+        <span class="select" data-letter="Y">Y</span> - 
+        <span class="select" data-letter="Z">Z</span>
+    </div>
+
+    <div class="artists-grid">
+        {{#artists}}
+        <a href="/artista/{{permalink}}" class="artista visible okmargin" data-letter="{{letter}}">
+            <div class="img-container">
+                <div class="img" style="background-image: url({{img}})"></div>
+            </div>
+
+            <div class="nomination"><span>{{name}}<br />{{subname}}</span></div>
+        </a>
+        {{/artists}}
+    
+    </div>
+
+    <div class="clearfix"></div>
+
+    <hr class="separator" />
+
+    <div class="timeline-container"></div>
+</script>
+

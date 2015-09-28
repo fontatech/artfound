@@ -1,0 +1,33 @@
+<script type="text/x-handlebars-template" id="bestslider-layout">
+    <div class="bestslider">
+        <div class="slideouter">
+            {{#opere}}
+                <div class="slide {{getClass id}}" data-id="{{id}}">
+                    <div class="slideinner" style="background-image: url({{img}})"></div>
+                </div>
+            {{/opere}}
+        </div>
+
+        <div class="legend">
+            <h2>{{opere.0.titolo}}</h2>
+            <a href="{{opere.0.artpermalink}}">{{opere.0.artista}}</a>
+
+            <p>{{opere.0.descrizione}}</p>
+
+            <div class="measure">{{opere.0.misure}}</div>
+        </div>
+
+        {{#opere.0.isDisponible}}
+            <div class="disponibility">
+                <div class="disponibility-inner">{{../opere.0.isDisponible}}</div>
+                <div class="infopoint"></div>
+            </div>
+        {{/opere.0.isDisponible}}
+
+        <div class="controls">
+            <div class="arrow goleft"></div>
+            <div class="arrow right goright"></div>
+        </div>
+    </div>
+</script>
+

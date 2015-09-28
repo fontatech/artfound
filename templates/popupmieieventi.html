@@ -1,0 +1,12 @@
+<script type="text/x-handlebars-template" id="popup-mieieventi">
+    <div class="popup-inner">
+        <div class="popup-close"></div>
+        <h2>{{trad.eventisalvati}}</h2> 
+        {{#eventi}}
+            <a href="{{permalink}}">{{title}}</a>
+        {{/eventi}}
+
+        <div class="popup-chiudi">{{trad.chiudi}}</div>
+
+    </div>
+</script>

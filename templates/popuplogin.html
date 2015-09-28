@@ -1,0 +1,27 @@
+<script type="text/x-handlebars-template" id="popup-login">
+    <div class="popup-inner">
+        <div class="popup-close"></div>
+        <div class="col1">
+            <h2>{{trad.nuovaregistrazione}}</h2> 
+
+            {{{trad.registrazionedescription}}}
+
+            <div class="register-open">{{trad.registrazione}}</div>
+
+        </div>
+
+        <div class="col2">
+            <h2>{{trad.utentiregistrati}}</h2>
+            <p>{{trad.inserirecredenziali}}</p>
+
+            <label>{{trad.email}}</label>
+            <input type="text" name="email" id="email" />
+
+            <label>{{trad.password}}</label>
+            <input type="password" name="password" id="password" />
+
+            <div class="do-login"><span>{{trad.accedi}}</span></div>
+        </div>
+    </div>
+</script>
+

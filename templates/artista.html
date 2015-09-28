@@ -1,0 +1,26 @@
+<script type="text/x-handlebars-template" id="artista">
+    <h2>{{trad.artista}}</h2>
+    <h1>{{name}}</h1>
+    <div class="controls">
+        <a href="{{nextlink}}" class="arrow"></a>
+        <a href="/artista/mario-rossi-right" class="arrow right"></a>
+        <a href="/artisti" class="cross"></a>
+    </div>
+
+    <div class="paragraph">
+        <div class="img-container">
+            <div class="img-scaled" style="background-image: url({{img}})"></div>
+        </div>
+        <div class="description">
+            <h3>{{title}}</h3>
+            <p>{{description}}</p>
+        </div>
+    </div>
+
+    <h4 class="littletitle">{{trad.opereartista}}</h4>
+    <div class="bestslider-container"></div>
+
+    <hr class="separator" />
+    <div class="timeline-container"></div>
+</script>
+

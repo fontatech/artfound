@@ -1,0 +1,27 @@
+<script type="text/x-handlebars-template" id="timeline-layout">
+    <div class="timeline-inner">
+        <div class="timeline-innerinner">
+            {{#eventi}}
+                <div class="timeline-event" data-year="{{year}}" data-order="{{order}}">
+                    <div class="img-container {{eventClass type}}" style="background-image: url({{img}});">
+                        {{eventType type ../trad.eventCurrent ../trad.eventFiuciur}}
+                    </div>
+
+                    <div class="content">
+                        <a href="/event/{{permalink}}" class="timeline-title">{{../trad.titoloevento}} - {{title}}</a>
+                        <div class="timeline-date">{{date}}</div>
+                    </div>
+                </div>
+            {{/eventi}}
+        </div>
+        <div class="timeline-controls">
+            <div class="control-line"></div>
+            <div class="control year" data-value="2014">2014</div>
+            <div class="control year" data-value="2015">2015</div>
+            <div class="control active" data-value="new">{{{trad.eventiRecenti}}}</div>
+
+            <div class="arrow goleft"></div>
+            <div class="arrow right goright"></div>
+        </div>
+    </div>
+</script>

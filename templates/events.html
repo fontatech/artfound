@@ -1,0 +1,33 @@
+<script type="text/x-handlebars-template" id="events">
+    <h1 class="page-title">{{trad.events}} <span class="gold">@ ART FOUND TRUST</span></h1>
+    <h2 class="page-description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.</h2>
+
+    {{#current}}
+    <div class="event current" style="background-image: url({{img}});">
+        <div class="inner-block">
+            <div class="event-type">{{../trad.eventCurrent}}</div>
+            <div class="event-title">{{title}}</div>
+            <div class="event-date">{{date}}</div>
+
+            <a class="arrow right goto-event" href="/event/{{permalink}}"></a>
+        </div>
+    </div>
+    {{/current}}
+
+    {{#future}}
+    <div class="event fiuciur" style="background-image: url({{img}});">
+        <div class="inner-block">
+            <div class="event-type">{{../trad.eventFiuciur}}</div>
+            <div class="event-title">{{title}}</div>
+            <div class="event-date">{{date}}</div>
+
+            <a class="arrow right goto-event" href="/event/{{permalink}}"></a>
+        </div>
+    </div>
+    {{/future}}
+
+    <hr class="separator" />
+
+    <div class="timeline-container"></div>
+</script>
+

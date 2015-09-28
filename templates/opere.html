@@ -1,0 +1,20 @@
+<script type="x-handlebars-template" id="opere-layout">
+    <h1 class="page-title">{{trad.opereprop}} <span class="gold">{{deltrust}}</span></h1>
+    <h2 class="page-description">{{trad.opereDescr}}</h2>
+
+    <div class="littletitle">{{trad.operedeltrust}}</div>
+
+    <div class="bestslider-container"></div>
+
+    <a class="richiedi">{{trad.richiedialtre}}</a>
+
+    <div class="littletitle">{{trad.artistitrust}}</div>
+    <div class="artisti-cont">
+    {{#artisti}}
+        <a class="artista" href="{{permalink}}">{{name}}</a>
+    {{/artisti}}
+    </div>
+
+    <hr class="separator" />
+    <div class="timeline-container"></div>
+</script>

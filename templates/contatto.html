@@ -1,0 +1,83 @@
+<script type="text/x-handlebars-template" id="contatto">
+    <h1 class="page-title">{{trad.contatti}} <span class="gold">@ ART FOUND TRUST</span></h1>
+    <h2 class="page-description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.</h2>
+
+    <hr class="separator" />
+
+    <div class="littletitle">{{trad.informazionigenerali}}</div>
+    <h2 class="page-description gen">{{trad.compilareicampi}}</h2>
+
+    <div class="form-gen">
+        <div class="gen-col1">
+            <label>{{trad.nomecognome}}</label>
+            <input type="text" id="gen-nomecognome" />
+            <label>{{trad.email}}</label>
+            <input type="text" id="gen-email" />
+            <label>{{trad.rectelefonico}}</label>
+            <input type="text" id="gen-email" />
+        </div>
+
+        <div class="gen-col2">
+            <label>{{trad.richiestacomunicazione}}</label>
+            <textarea id="gen-richiesta"></textarea>
+        </div>
+
+        <div id="gen-invio"><a href="#">{{trad.invio}}</a></div>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <hr class="separator" />
+
+    <div class="littletitle">{{trad.informazionigenerali}}</div>
+    <h2 class="page-description gen">{{trad.riservataregistrati}}</h2>
+
+    <div class="form-reg">
+        <div class="col2">
+            <h2>{{trad.utentiregistrati}}</h2>
+            <p>{{trad.inserirecredenziali}}</p>
+
+            <label>{{trad.email}}</label>
+            <input type="text" name="email" id="email" />
+
+            <label>{{trad.password}}</label>
+            <input type="password" name="password" id="password" />
+
+            <div class="do-login"><span>{{trad.accedi}}</span></div>
+        </div>
+
+        <div class="col1">
+            <h2>{{trad.nuovaregistrazione}}</h2> 
+            <p>{{{trad.registrazionedescription2}}}</p>
+            <div class="register-open">{{trad.registrazione}}</div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <hr class="separator"></div>
+
+    <div class="littletitle">{{trad.indirizzo}}</div>
+
+    <div id="map"></div>
+
+    <div class="indirizzodati">
+        <div class="subcol-2">
+            +39 02 000 0000<br />
+            <a data-bypass href="mailto: info@artfoundtrust.com">info@artfoundtrust.com</a><br />
+            <a data-bypass target="_BLANK" href="#">Google Maps</a><br />
+            <a href="/privacy">Privacy</a>
+        </div>
+
+        <div class="subcol-1">
+            Art Found Trust <br />
+            Corso Venezia 44 <br />
+            20121 Milano <br />
+            P.IVA 00000000000
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <hr class="separator" />
+</script>
