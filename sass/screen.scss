@@ -11,6 +11,7 @@ $title : #4b4b4b;
 $gold: #d3bb86;
 $description: #434343;
 $title2: #151515;
+$goldpref: #d4bc89;
 
 @font-face {
     font-family: "Lato";
@@ -92,9 +93,9 @@ body, html {
 
 #app-container {
     width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    //position: fixed;
+    //top: 0;
+    //left: 0;
     opacity: 0 !important;
     @include transition(padding-top 0.4s $soniabezier, opacity 0.8s $soniabezier);
 
@@ -163,9 +164,9 @@ header {
                 display: inline-block;
                 vertical-align: bottom;
                 margin: 0 12px;
-                color: #c1c1c1;
-
-                &.active {
+                color: #dcdcdc;
+                
+                &.active, &:hover {
                     color: #4b4b4b;
                 }
             }
@@ -180,11 +181,15 @@ header {
         text-align: right;
 
         .accedi {
-            color: #c4c4c4;
+            color: #dcdcdc;
             font-size: 14px;
             display: table-cell;
             vertical-align: bottom;
             cursor: pointer;
+
+            &:hover {
+                color: #4b4b4b;
+            }
         }
 
         .rightmenu {
@@ -258,6 +263,10 @@ header {
             display: inline-block;
             cursor: pointer;
 
+            &:hover {
+                color: $title2;
+            }
+
             &.active {
                 color: $title2;
                 text-decoration: underline;
@@ -268,7 +277,7 @@ header {
 
 footer {
     width: 100%;
-    background-color: #f8f8f8;
+    background-color: #f7f7f7;
 
     .inner {
         width: 1000px;
@@ -336,7 +345,7 @@ footer {
 
 #app-container, #page-container, footer, .consultazione, #splashscreen {
     @include opacity(1);
-    @include transition(all 800ms cubic-bezier(.19,1,.22,1) 0ms);
+    @include transition(all 300ms cubic-bezier(.19,1,.22,1) 0ms);
 
     &.hidden {
         @include opacity(0);
@@ -664,6 +673,17 @@ footer {
                 background-size: cover;
                 position: relative;
 
+                &.current:before {
+                    z-index: 1;
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(39, 39, 39, 0.5);
+                }
+
                 &.future:before {
                     z-index: 1;
                     content: '';
@@ -672,7 +692,7 @@ footer {
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background-color: rgba(211, 211, 211, 0.7);
+                    background-color: rgba(239, 239, 239, 0.5);
                 }
 
                 .tl-eventtype {
@@ -1054,7 +1074,7 @@ footer {
     }
 
     .artists-grid {
-        width: 982px;
+        width: 1026px;
         float: left;
 
         .artista {
@@ -1066,7 +1086,7 @@ footer {
             background-color: #f8f8f8;
             display: block;
             text-decoration: none;
-            margin: 0 0 25px 0;
+            margin: 0 44px 25px 0;
 
             &:hover .img {
                 @include transform(scale(1) !important);
@@ -1088,10 +1108,6 @@ footer {
 
             &.visible {
                 opacity: 1;
-            }
-
-            &.okmargin:nth-child(3n+2) {
-                margin: 0 44px 25px 44px;
             }
 
             .nomination {
@@ -1320,10 +1336,13 @@ footer {
     width: 100%;
     height: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     @include display-flex;
     cursor: pointer;
     align-items: center;
     justify-content: center;
+    z-index: 20;
 
     .popup-inner {
         width: 900px;
@@ -1368,7 +1387,8 @@ footer {
             margin-bottom: 32px;
         }
 
-        p {
+        p,
+        .divseparatore {
             line-height: 150%;
             color: $description;
             font-size: 14px;
@@ -1377,6 +1397,37 @@ footer {
             b {
                 font-family: "LatoBlack";
             }
+        }
+
+        .topspacer {
+            width: 100%;
+            height: 25px;
+            clear: both;
+        }
+
+        .campiobbligatori {
+            color: $description;
+            font-size: 11px;
+        }
+
+        .step2 {
+            @include transition(opacity 0.3s linear 0s, transform 0.6s cubic-bezier(0.2,1,0.3,1) 0s !important);
+            opacity: 0 !important;
+            @include transform(translate3d(0,100px,0) !important);
+
+            &.fadein {
+                opacity: 1 !important;
+                @include transform(translate3d(0,0,0) !important);
+            }
+        }
+
+        .step2.col1 {
+            border: 0;
+        }
+
+        .step1.fadeout {
+            @include transition(opacity 0.3s linear 0s, transform 0.6s cubic-bezier(0.2,1,0.3,1) 0s !important);
+            opacity: 0 !important;
         }
 
         .col1 {
@@ -1394,6 +1445,20 @@ footer {
                 cursor: pointer;
                 font-size: 14px;
                 text-decoration: underline;
+            }
+
+            .borderleft {
+                position: relative;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -16px;
+                    width: 7px;
+                    height: 100%;
+                    background-color: #ebdfc8;
+                }
             }
         }
 
@@ -1423,9 +1488,14 @@ footer {
                 width: 276px;
                 border: 1px solid #c8c8c8;
                 margin-bottom: 20px;
+                @include transition(all 0.2s linear);
+
+                &.has-error {
+                    border-color: #c00;
+                }
             }
 
-            .do-login {
+            .do-login, .do-registration {
                 color: $description;
                 font-size: 14px;
                 text-decoration: underline;
@@ -1438,6 +1508,54 @@ footer {
                 }
             }
         }
+    }
+
+    &.ricercap .popup-inner {
+        width: 675px;
+        height: 230px;
+        padding: 48px 178px 40px 58px;
+
+        h1 {
+            font-size: 19px;
+            font-family: "BookAntiqua";
+            font-weight: bold;
+            color: $title;
+            line-height: 100%;
+            margin-bottom: 29px;
+        }
+
+        .cliccacerca {
+            cursor: pointer;
+            width: 100%;
+            text-decoration: underline;
+            font-family: "BookAntiqua";
+            font-weight: bold;
+            color: #c1c1c1;
+            font-size: 18px;
+        }
+
+        #ricercarapida {
+            font-size: 18px;
+            font-family: "BookAntiqua";
+            font-weight: bold;
+            line-height: 120%;
+            color: #929292;
+            display: none;
+            border: 0;
+            outline: none;
+        }
+
+        #avviaricerca {
+            cursor: pointer;
+            position: absolute;
+            bottom: 50px;
+            left: 58px;
+            font-size: 14px;
+            text-decoration: underline;
+            color: $description;
+        }
+
+
     }
 
     &.relatore .popup-inner {
@@ -1525,6 +1643,73 @@ footer {
             color: $description;
         }
     }
+
+    &.preferenze {
+        .inner {
+            position: relative;
+        }
+
+        h2 {
+            font-family: "BookAntiqua";
+            font-size: 19px;
+            font-weight: bold;
+            color: #4b4b4b;
+            line-height: 100%;
+            margin-bottom: 32px;
+        }
+
+        p {
+            width: 480px;
+            line-height: 150%;
+            color: $goldpref;
+            font-size: 14px;
+            margin-bottom: 26px;
+        }
+
+        .row {
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            color: $description;
+            margin-bottom: 16px;
+
+            b {
+                font-family: "LatoBlack";
+            }
+        }
+
+        .labelpref {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            margin-right: 18px;
+            width: 24px;
+            height: 24px;
+            border: 1px solid #979797;
+            cursor: pointer;
+
+            &.checked:before {
+                content: '';
+                position: absolute;
+                top: 3px;
+                left: 4px;
+                background-image: url(../img/check.svg);
+                @include background-size(cover);
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        .salva-preferenze {
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 14px;
+            text-decoration: underline;
+            color: $description;
+        }
+    }
 }
 
 .view-class.evento {
@@ -1534,6 +1719,7 @@ footer {
         font-size: 54px;
         line-height: 100%;
         margin-bottom: 56px;
+        font-weight: bold;
     }
 
     h2.title {
@@ -2082,7 +2268,9 @@ footer {
 #homelateral {
     width: 377px;
     height: 2360px;
-    position: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 1;
     @include transition(all .5s $soniabezier);
     @include transform(translate3d(-377px,0,0));
@@ -2136,6 +2324,12 @@ footer {
         color: $description;
         margin-top: 25px;
         margin-bottom: 20px;
+
+        &.futuro {
+            font-family: "BookAntiqua";
+            font-size: 15px;
+            font-weight: bold;
+        }
     }
 
     .incorso-descr {
@@ -2227,5 +2421,168 @@ footer {
         background-color: #3f3f3f;
         display: inline-block;
         float: left;
+        position: relative;
+
+        &:after {
+            content: 'i';
+            position: absolute;
+            font-family: 'BookAntiqua';
+            font-weight: bold;
+            color: #fff;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            @include transform(translate3d(-50%,-50%,0));
+        }
+    }
+}
+
+.first-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 200000;
+    @include transition(opacity 0.3s);
+}
+
+@include keyframes(bounce) {
+    0% { @include transform(translate3d(0,0,0)) }
+    25% { @include transform(translate3d(-5px,0,0)) }
+    50% { @include transform(translate3d(0,0,0)) }
+    75% { @include transform(translate3d(5px,0,0)) }
+    100% { @include transform(translate3d(0,0,0)) }
+}
+
+.has-shake {
+    @include animation-name(bounce);
+    @include animation-duration(200ms);
+    @include animation-iteration-count(3);
+    @include animation-timing-function(linear);
+}
+
+.ricerca {
+    h1 {
+        font-family: "BookAntiqua";
+        font-weight: bold;
+        font-size: 54px;
+        color: $title;
+        margin-bottom: 55px;
+        line-height: 100%;
+
+        .gold {
+            color: $gold;
+        }
+    }
+
+    .testodacercare {
+        font-family: "BookAntiqua";
+        font-weight: bold;
+        font-size: 32px;
+        color: #c1c1c1;
+        line-height: 100%;
+        margin-bottom: 28px;
+
+        .scuro {
+            display: inline-block;
+            margin-left: 5px;
+            text-decoration: underline;
+            cursor: pointer;
+            color: #929292;
+        }
+    }
+
+    .descr {
+        width: 334px;
+        line-height: 140%;
+        font-size: 14px;
+        color: $description;
+        font-family: "Lato";
+        font-weight: normal;
+    }
+
+    .separator {
+        width: 100%;
+        clear: both;
+        height: 1px;
+        margin: 56px 0;
+        background-color: #d1d1d1;
+    }
+
+    .hidden {
+        font-size: 18px;
+        font-family: "BookAntiqua";
+        font-weight: bold;
+        color: #929292;
+        font-size: 32px;
+        display: none;
+        border: 0;
+        outline: none;
+    }
+
+    .grid-artisti {
+        width: 100%;
+        max-height: 150px;
+        @include display-flex;
+        @include flex-direction(column);
+        @include flex-wrap(wrap);
+        @include align-content(flex-start);
+    }
+
+    .artista-ricerca {
+        width: 33.33333%;
+        height: 25px;
+
+        a {
+            text-decoration: underline;
+            font-family: "Lato";
+            font-size: 13px;
+            color: $description;
+        }
+    }
+
+    .grid-eventi {
+        width: 100%;
+        float: left;
+        
+        &:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+    }
+
+    .evento-ricerca {
+        width: 33.3333%;
+    }
+}
+
+.has-tooltip {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    top: -7px;
+    left: 110%;
+    @include transition(all 0.3s);
+    @include transform(scale(0));
+    @include transform-origin(0);
+    font-family: "BookAntiqua";
+    font-weight: bold;
+    color: #888;
+    text-align: center;
+    border: 1px solid #3c3c3c;
+    background-color: #fff;
+    line-height: 100%;
+    padding: 14px;
+    font-size: 14px;
+    display: inline-block;
+    min-width: 280px;
+
+    &.open {
+        @include transform(scale(1));
     }
 }

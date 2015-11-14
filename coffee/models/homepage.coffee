@@ -1,6 +1,7 @@
 window.app = window.app || {}
 
 app.HomepageModel = Thorax.Model.extend(
-    url: '/api/homepage'
+    url: () ->
+        return '/api/homepage/' + Translator.currentLang
 )
 

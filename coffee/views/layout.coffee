@@ -15,6 +15,7 @@ Thorax.LayoutView.extend(
         'click .popup-login': 'openLoginPopup'
         'click .logout': 'doLogout'
         'click .miei-eventi': 'openMieieventiPopup'
+        'click .ricerca': 'openRicercaPopup'
 
     initialize: () ->
         that = this
@@ -54,6 +55,7 @@ Thorax.LayoutView.extend(
 
     openLoginPopup: (evt) ->
         evt.preventDefault()
+        console.log 'ok'
         this.popup = new Thorax.Views['loginpopup']()
         this.popup.render()
 
@@ -69,9 +71,17 @@ Thorax.LayoutView.extend(
 
         this.popup.$el.appendTo document.body
 
+    openRicercaPopup: (evt) ->
+        evt.preventDefault()
+        this.popup = new Thorax.Views['ricercapopup']()
+
+        this.popup.render()
+
+        this.popup.$el.appendTo document.body
+
     doLogout: () ->
         $.ajax(
-            url: '/api/login'
+            url: '/api/logout'
             dataType: 'json'
             success: (resp) ->
                 if resp.status == 'OK'

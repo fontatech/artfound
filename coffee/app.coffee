@@ -1,11 +1,19 @@
 $( (evt) ->
 
+    #safari check
+    ua = navigator.userAgent.toLowerCase()
+    if ua.indexOf('safari') != -1
+        if ua.indexOf('chrome') > -1
+            isSafari = false
+        else
+            isSafari = true
+
     app._goToNonHome = () ->
         element = document.getElementById('main-container')
         afterTransition = () ->
             $('header .col-dx').show()
             $('header .col-center').css('width', '')
-            element.style.margin = ''
+            #element.style.margin = ''
 
 
         element.style.width = '1000px'
@@ -20,6 +28,15 @@ $( (evt) ->
 
         $('#homelateral').removeClass 'open'
         app.isHome = false
+
+        #Footer restyle (change for responsive)
+        $('footer .inner').css 'margin-left', ''
+        $('footer .inner').css 'width', ''
+        $('footer .inner .col1').css 'width', ''
+        $('footer .inner .col2').css 'width', ''
+        $('footer .subcol-1').css 'width', ''
+        $('footer .subcol-2').css 'width', ''
+        $('footer .subcol-3').css 'width', ''
 
         setTimeout afterTransition, 500
 
@@ -50,11 +67,6 @@ $( (evt) ->
     )
 
     Translator.init()
-
-    $(window).on 'scroll', ->
-        TweenLite.to $('#app-container'), 0, {} =
-            y: -window.pageYOffset
-            force3D: true
 
     $(document).on 'click', 'a:not([data-bypass])', (evt) ->
         evt.preventDefault()

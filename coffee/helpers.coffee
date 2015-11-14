@@ -1,6 +1,7 @@
 $(() ->
 
     Handlebars.registerHelper('eventClass', (type) ->
+        return 'current' if type == 'PRESENT'
         return 'future' if type == 'FUTURE'
     )
 

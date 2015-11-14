@@ -4,10 +4,16 @@ Thorax.View.extend(
     className: 'view-class evento'
     template: Handlebars.compile($('#evento').html())
     timeline: null
+    conferme:
+        partecipazione: true
+        conversazioni: true
+        notifiche: false
+        preferiti: false
 
     events:
         'click .click-documentazione': 'downloadDocumentazione'
         'click .click-relatore': 'relatorePopup'
+        'click .open-checkboxes': 'openCheckboxes'
 
     initialize: () ->
         that = this
@@ -19,6 +25,8 @@ Thorax.View.extend(
         this.setModel new app.EventoModel({} =
             id: this.eventoId
         )
+
+        this.conferme = this.model.get('conferme')
 
         this.listenTo that, 'rendered', () ->
             that.bestslider = new Thorax.Views['bestslider']({} =
@@ -53,5 +61,15 @@ Thorax.View.extend(
 
                 app.layout.popup.render()
                 app.layout.popup.$el.appendTo document.body
+
+    openCheckboxes: (evt) ->
+        evt.preventDefault()
+
+        app.layout.popup = new Thorax.Views['preferenzepopup']({} =
+            nomeevento: this.model.get('name').toUpperCase() + ' ' + this.model.get('description')
+            permalink: this.eventoId
+        )
+        app.layout.popup.render()
+        app.layout.popup.$el.appendTo document.body
 )
 

@@ -19,6 +19,7 @@ window.Translator =
         this.currentLang = localStorage.getItem('currentLanguage') if localStorage.getItem('currentLanguage')
 
         $.ajax(
+            dataType: 'json'
             url: '/api/translations'
             success: (translations) ->
                 Translator._translations = translations

@@ -1,9 +1,8 @@
-Options -Indexes
+RewriteEngine On  
+# If an existing asset or directory is requested go to it as it is
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
 
-<ifModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} !index
-    RewriteRule (.*) index.html [L,QSA]
-</ifModule>
+# If the requested resource doesn't exist, use index.html
+RewriteRule ^ /index.html

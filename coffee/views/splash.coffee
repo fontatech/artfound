@@ -21,9 +21,20 @@ Thorax.View.extend(
 
             $(document.body).addClass('noscroll')
             $(document.body).append(this.el)
-            this.initSlider()
 
-            setTimeout(openCookies, 200) if !CookieManager.getInstance().isAccepted()
+            #Creates an image and in it's load starts all things
+            img = new Image()
+            img.src = '/img/splash1.jpg'
+            img.onload = () ->
+                afterTimeout = () ->
+                    that.$el.find('.first-background').css 'display', 'none'
+
+                #hide white background
+                that.$el.find('.first-background').css 'opacity', '0'
+                setTimeout afterTimeout, 300
+
+                that.initSlider()
+                setTimeout(openCookies, 600) if !CookieManager.getInstance().isAccepted()
         )
 
     acceptCookie: () ->

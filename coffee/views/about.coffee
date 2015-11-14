@@ -46,7 +46,7 @@ Thorax.View.extend(
 
         setOther = () ->
             curr.get(0).className = 'element'
-            curr.appendTo(curr.parent())
+            #curr.appendTo(curr.parent())
             that.controllable = true
 
         count = that.$el.find('.element').length
@@ -72,7 +72,7 @@ Thorax.View.extend(
 
         setOther = () ->
             curr.get(0).className = 'element'
-            curr.appendTo(curr.parent())
+            #curr.appendTo(curr.parent())
             that.controllable = true
 
         count = that.$el.find('.element').length

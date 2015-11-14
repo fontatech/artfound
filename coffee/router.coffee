@@ -11,7 +11,9 @@ window.app.router = Backbone.Router.extend(
         'event/:evento': 'evento'
         'pubblicazioni': 'pubblicazioni'
         'contatto': 'contatto'
+        'contatto/:evento': 'contattoLink'
         'opere-proprietarie': 'opere'
+        'ricerca/:query': 'ricerca'
 
     initialize: () ->
         Backbone.history.start(
@@ -26,7 +28,6 @@ window.app.router = Backbone.Router.extend(
                 newView.$el.addClass 'visible' if newView
             remove()
             complete()
-            $(document.body).css 'height', $('#app-container').css 'height'
             $('.main-menu a[href="' + location.pathname + '"]').addClass 'active'
 
             setTimeout show, 100
@@ -53,7 +54,6 @@ window.app.router = Backbone.Router.extend(
                 newView.$el.addClass 'visible' if newView
             remove()
             complete()
-            $(document.body).css 'height', (parseInt($('#homelateral').css 'height') + parseInt($('footer').css 'height'))
             $('#main-container').css 'height', '2240px'
             $('.main-menu a[href="' + location.pathname + '"]').addClass 'active'
             app._goToHomeLayout()
@@ -68,6 +68,15 @@ window.app.router = Backbone.Router.extend(
         $('#app-container').addClass 'padded-top'
         $('#loader').addClass 'open'
         $('.main-menu a').removeClass 'active'
+
+        #Footer restyle (change for responsive)
+        $('footer .inner').css 'margin-left', '261px'
+        $('footer .inner').css 'width', '1085px'
+        $('footer .inner .col1').css 'width', '335px'
+        $('footer .inner .col2').css 'width', '626px'
+        $('footer .subcol-1').css 'width', '187px'
+        $('footer .subcol-2').css 'width', '214px'
+        $('footer .subcol-3').css 'width', '80px'
 
         setTimeout afterTimeout, 800
 
@@ -128,6 +137,10 @@ window.app.router = Backbone.Router.extend(
         app.layout.setView new Thorax.Views['contatto'](), {} =
             transition: this.transition
 
+    contattoLink: (contatto) ->
+        app.layout.setView new Thorax.Views['contatto'](), {} =
+            transition: this.transition
+
 
 
     opere: () ->
@@ -135,5 +148,16 @@ window.app.router = Backbone.Router.extend(
             model: new app.OpereModel()
 
         app.layout.setView new Thorax.Views['opere'](model), {} =
+            transition: this.transition
+
+
+    ricerca: (query) ->
+        model =
+            model: new app.RicercaModel({} =
+                id: query
+            )
+            query: query
+
+        app.layout.setView new Thorax.Views['ricerca'](model), {} =
             transition: this.transition
 )
