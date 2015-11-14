@@ -1,7 +1,7 @@
 <script type="text/x-handlebars-template" id="popup-login">
     <div class="popup-inner">
         <div class="popup-close"></div>
-        <div class="col1">
+        <div class="col1 step1">
             <h2>{{trad.nuovaregistrazione}}</h2> 
 
             {{{trad.registrazionedescription}}}
@@ -10,7 +10,7 @@
 
         </div>
 
-        <div class="col2">
+        <div class="col2 step1">
             <h2>{{trad.utentiregistrati}}</h2>
             <p>{{trad.inserirecredenziali}}</p>
 
@@ -21,6 +21,29 @@
             <input type="password" name="password" id="password" />
 
             <div class="do-login"><span>{{trad.accedi}}</span></div>
+        </div>
+
+        <div class="col1 step2">
+            <h2>{{trad.nuovaregistrazione}}</h2> 
+
+            <div class="divseparatore">{{{trad.registrazionedescription2}}}</div>
+
+            <div class="campiobbligatori">{{trad.campiobbligatori}}</div>
+
+        </div>
+
+        <div class="col2 step2">
+            <div class="topspacer"></div>
+            <label>{{trad.nomeecognome}}</label>
+            <input type="text" name="nomecognome" id="nomecognome" />
+
+            <label>{{trad.email}}</label>
+            <input type="text" name="emailreg" id="emailreg" />
+
+            <label>{{trad.stabiliscipassword}}</label>
+            <input type="password" name="passwordreg" id="passwordreg" />
+
+            <div class="do-registration"><span>{{trad.attivaregistrazione}}</span></div>
         </div>
     </div>
 </script>
