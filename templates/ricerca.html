@@ -1,0 +1,41 @@
+<script type="text/x-handlebars-template" id="ricerca">
+    <h1>{{trad.risultato}}<span class="gold">{{trad.dellaricerca}}</span></h1>
+    <div class="testodacercare">{{trad.testodaricercare}}: <span class="scuro has-tooltip" data-has-tooltip="{{trad.cambiaricerca}}">{{query}}</span><input type="text" class="hidden" /></div>
+    <div class="descr">{{trad.ricercaprodottocorrispondenze}}</div>
+
+    <!-- ARTISTI -->
+    {{#if artists}}
+        <div class="separator"></div>
+        <h2 class="littletitle">{{trad.artisti}}</h2>
+
+        <div class="grid-artisti">
+        {{#each artists}}
+            <div class="artista-ricerca">
+                <a href="/artista/{{permalink}}">{{name}}</a>
+            </div>
+        {{/each}}
+        </div>
+    {{/if}}
+
+    <!-- EVENTI -->
+    {{#if events}}
+        <div class="separator"></div>
+        <h2 class="littletitle">{{trad.eventi}}</h2>
+
+        <div class="grid-eventi">
+        {{#each events}}
+            <a href="/event/{{permalink}}" class="evento-ricerca">
+                <div class="immgg" style="background-image:url({{image}})"></div>
+                <h2>{{title}}</h2>
+                <h3>{{date}}</h3>
+            </a>
+        {{/each}}
+        </div>
+    {{/if}}
+
+    {{#if hasResults}}
+        <div class="separator"></div>
+    {{/if}}
+    <!-- OPERE -->
+</script>
+
