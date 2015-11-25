@@ -29,13 +29,16 @@ Thorax.View.extend(
         this.conferme = this.model.get('conferme')
 
         this.listenTo that, 'rendered', () ->
-            that.bestslider = new Thorax.Views['bestslider']({} =
-                opere: that.model.get('opere')
-            )
+            if !this.model.get 'isFuture'
+                that.bestslider = new Thorax.Views['bestslider']({} =
+                    opere: that.model.get('opere')
+                )
+
             that._addChild that.bestslider
 
             that.timeline.render()
-            that.bestslider.render()
+            if !this.model.get 'isFuture'
+                that.bestslider.render()
             that.$el.find('.timeline-container').html that.timeline.el
             that.$el.find('.bestslider-container').html that.bestslider.el
 

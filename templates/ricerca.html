@@ -1,6 +1,6 @@
 <script type="text/x-handlebars-template" id="ricerca">
-    <h1>{{trad.risultato}}<span class="gold">{{trad.dellaricerca}}</span></h1>
-    <div class="testodacercare">{{trad.testodaricercare}}: <span class="scuro has-tooltip" data-has-tooltip="{{trad.cambiaricerca}}">{{query}}</span><input type="text" class="hidden" /></div>
+    <h1>{{trad.risultato}} <span class="gold">{{trad.dellaricerca}}</span></h1>
+    <div class="testodacercare">{{trad.testodaricercare}}: <span class="scuro has-tooltip" data-has-tooltip="{{trad.cambiaricerca}}">{{query}}</span><input type="text" class="hidden" id="searchtext" /></div>
     <div class="descr">{{trad.ricercaprodottocorrispondenze}}</div>
 
     <!-- ARTISTI -->
@@ -24,18 +24,35 @@
 
         <div class="grid-eventi">
         {{#each events}}
-            <a href="/event/{{permalink}}" class="evento-ricerca">
-                <div class="immgg" style="background-image:url({{image}})"></div>
-                <h2>{{title}}</h2>
-                <h3>{{date}}</h3>
-            </a>
+            <div class="evento-ricerca">
+                <a href="/event/{{permalink}}" class="evento-ricerca-inner">
+                    <div class="immgg" style="background-image:url({{image}})"></div>
+                    <h2>{{title}}</h2>
+                    <h3>{{date}}</h3>
+                </a>
+            </div>
         {{/each}}
         </div>
     {{/if}}
 
-    {{#if hasResults}}
-        <div class="separator"></div>
-    {{/if}}
     <!-- OPERE -->
+    {{#if artworks}}
+        <div class="separator"></div>
+        <h2 class="littletitle">{{trad.opere}}</h2>
+
+        <div class="grid-eventi">
+        {{#each artworks}}
+            <div class="evento-ricerca">
+                <a href="/artista/{{permalink}}" class="evento-ricerca-inner">
+                    <div class="immgg" style="background-image:url({{image}})"></div>
+                    <h2>{{title}}</h2>
+                    <h3>{{artist}}</h3>
+                </a>
+            </div>
+        {{/each}}
+        </div>
+    {{/if}}
+
+    <div class="separator"></div>
 </script>
 

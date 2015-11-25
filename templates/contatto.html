@@ -1,6 +1,6 @@
 <script type="text/x-handlebars-template" id="contatto">
     <h1 class="page-title">{{trad.contatti}} <span class="gold">@ ART FOUND TRUST</span></h1>
-    <h2 class="page-description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.</h2>
+    <h2 class="page-description">{{trad.contattidescr}}</h2>
 
     <hr class="separator" />
 
@@ -29,19 +29,27 @@
 
     <hr class="separator" />
 
-    <div class="littletitle">{{trad.informazionigenerali}}</div>
+    <div class="littletitle">{{trad.visitaesclusiva}}</div>
     <h2 class="page-description gen">{{trad.riservataregistrati}}</h2>
 
+    {{#if isLogged}}
+        <div class="visita-descr">{{trad.dativisita}}</div>
+        <textarea id="visitacontent"></textarea>
+        <div class="invia-visita">
+            <span>Invio</span>
+        </div>
+        <div class="visitatel">{{trad.visitatel}}</div>
+    {{else}}
     <div class="form-reg">
         <div class="col2">
             <h2>{{trad.utentiregistrati}}</h2>
             <p>{{trad.inserirecredenziali}}</p>
 
             <label>{{trad.email}}</label>
-            <input type="text" name="email" id="email" />
+            <input type="text" name="email" id="email-cont" />
 
             <label>{{trad.password}}</label>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="password" id="password-cont" />
 
             <div class="do-login"><span>{{trad.accedi}}</span></div>
         </div>
@@ -54,6 +62,7 @@
 
         <div class="clearfix"></div>
     </div>
+    {{/if}}
 
     <hr class="separator"></div>
 

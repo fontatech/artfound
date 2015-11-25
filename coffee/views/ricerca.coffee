@@ -8,6 +8,8 @@ Thorax.View.extend(
     events:
         'mouseover [data-has-tooltip]': 'openTooltip'
         'mouseout [data-has-tooltip]': 'closeTooltip'
+        'click [data-has-tooltip]': 'openText'
+        'keyup #searchtext': 'doSearch'
 
     initialize: () ->
         that = this
@@ -27,6 +29,21 @@ Thorax.View.extend(
 
     closeTooltip: (evt) ->
         this.tooltip.className = 'tooltip'
+
+
+    openText: (evt) ->
+        that = this
+        this.$el.find('.has-tooltip').css 'display', 'none'
+        $('#searchtext').css 'display', 'inline-block'
+        $('#searchtext').focus()
+
+    cerca: (evt) ->
+        evt.preventDefault() if evt
+        href = '/ricerca/' + encodeURI(this.$el.find('#searchtext').val())
+        Backbone.history.navigate href, true
+
+    doSearch: (evt) ->
+        this.cerca() if evt.keyCode == 13
 )
 
 

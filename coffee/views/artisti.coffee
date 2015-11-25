@@ -17,7 +17,6 @@ Thorax.View.extend(
         this._addChild this.timeline
 
         this.setModel new app.ArtistsModel()
-        console.log(this.model)
 
         this.listenTo that, 'rendered', () ->
             that.timeline.render()

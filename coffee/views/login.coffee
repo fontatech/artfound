@@ -12,16 +12,27 @@ Thorax.View.extend(
         'click .do-login': 'doLogin'
         'click .register-open': 'openRegister'
         'click .do-registration': 'goRegister'
+        'keyup #email': 'loginIf'
+        'keyup #password': 'loginIf'
 
     initialize: () ->
         that = this
         this.trad = Translator.getTranslations()
 
+
         this.listenTo this, 'rendered', (evt) ->
             afterTimeout = () ->
                 that.$el.find('.popup-inner').addClass 'open'
+                that.startWithRegister() if that.isRegister
 
             setTimeout afterTimeout, 50
+
+
+    startWithRegister: () ->
+        that = this
+        this.$el.find('.step1').css 'display', 'none'
+        this.$el.find('.step2').addClass 'fadein'
+
 
     closePopup: (evt) ->
         that = this
@@ -36,6 +47,9 @@ Thorax.View.extend(
 
     stopPropagation: (evt) ->
         evt.stopPropagation()
+
+    loginIf: (evt) ->
+        this.doLogin() if evt.keyCode == 13
 
     doLogin: (evt) ->
         that = this
@@ -58,10 +72,12 @@ Thorax.View.extend(
 
                 if resp.status == 'OK'
                     window.app.isLoggedUser = true
-                    that.closePopup()
+                    that.listenToOnce(window.app.UserInstance, 'sync', () ->
+                        that.closePopup()
+                        Backbone.history.stop()
+                        Backbone.history.start()
+                    )
                     window.app.UserInstance.fetch()
-                    Backbone.history.stop()
-                    Backbone.history.start()
                 else
                     $('#email,#password').addClass 'has-shake'
                     $('#email,#password').addClass 'has-error'

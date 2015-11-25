@@ -1710,6 +1710,154 @@ footer {
             color: $description;
         }
     }
+
+
+    &.operepopup {
+        .popup-inner {
+            width: 902px;
+            height: 420px;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-family: "BookAntiqua";
+            font-size: 19px;
+            font-weight: bold;
+            color: #4b4b4b;
+            line-height: 100%;
+            margin-bottom: 32px;
+        }
+
+        h3 {
+            font-family: "BookAntiqua";
+            font-size: 15px;
+            color: $title;
+            line-height: 100%;
+            margin-bottom: 17px;
+        }
+
+        h4 {
+            font-size: 12px;
+            line-height: 100%;
+            color: $description;
+            margin-bottom: 38px;
+        }
+
+        label.field {
+            margin-top: 21px;
+            font-size: 14px;
+            color: $description;
+            line-height: 100%;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .bigtextarea {
+            width: 633px;
+            height: 156px;
+            line-height: 120%;
+            color: #838383;
+            border: 1px solid #c8c8c8;
+            margin-bottom: 9px;
+            resize: none;
+        }
+
+        input {
+            padding-left: 2px;
+            color: #838383;
+            height:22px;
+            line-height: 22px;
+            width: 276px;
+            border: 1px solid #c8c8c8;
+            margin-bottom: 20px;
+            @include transition(all 0.2s linear);
+
+            &.has-error {
+                border-color: #c00;
+            }
+        }
+
+        .invio {
+            color: #434343;
+            font-size: 14px;
+            text-decoration: underline;
+            width: 276px;
+            margin-top: 11px;
+            margin-bottom: 64px;
+
+            span {
+                cursor: pointer;
+            }
+        }
+
+        .innerbox {
+            width: 100%;
+            height: 328px;
+            overflow: hidden;
+
+            .scrollable {
+                width: 105%;
+                height: 100%;
+                overflow-y: scroll;
+            }
+        }
+
+        .tohide, .toshow {
+            @include transition(all 0.3s);
+        }
+
+        .toshow {
+            @include transform(translate3d(0,100px,0));
+            opacity: 0;
+            font-size: 14px;
+            color: $description;
+            display: none;
+
+            &.go {
+                @include transform(translate3d(0,0,0));
+                opacity: 1;
+            }
+        }
+
+        .row {
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            color: $description;
+            margin-bottom: 16px;
+
+            b {
+                font-family: "LatoBlack";
+            }
+        }
+
+        .labelpref {
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            margin-right: 18px;
+            width: 24px;
+            height: 24px;
+            border: 1px solid #979797;
+            cursor: pointer;
+            @include transition(all 0.2s linear);
+
+            &.checked:before {
+                content: '';
+                position: absolute;
+                top: 3px;
+                left: 4px;
+                background-image: url(../img/check.svg);
+                @include background-size(cover);
+                width: 18px;
+                height: 18px;
+            }
+
+            &.has-error {
+                border-color: #c00;
+            }
+        }
+    }
 }
 
 .view-class.evento {
@@ -1903,6 +2051,7 @@ footer {
             width: 42px;
             height: 42px;
             margin-right: 12px;
+            cursor: pointer;
         }
     }
 
@@ -2119,6 +2268,10 @@ footer {
         width: 276px;
         border: 1px solid #c8c8c8;
         margin-bottom: 20px;
+
+        &.has-error {
+            border-color: #c00;
+        }
     }
 
     label {
@@ -2153,6 +2306,7 @@ footer {
             cursor: pointer;
             font-size: 14px;
             text-decoration: underline;
+            display: inline;
         }
     }
 
@@ -2179,6 +2333,10 @@ footer {
             width: 276px;
             border: 1px solid #c8c8c8;
             margin-bottom: 20px;
+
+            &.has-error {
+                border-color: #c00;
+            }
         }
 
         .do-login {
@@ -2212,6 +2370,7 @@ footer {
             color: $description;
             font-size: 14px;
             margin-bottom: 25px;
+            width: 260px;
 
             b {
                 font-family: "LatoBlack";
@@ -2557,6 +2716,48 @@ footer {
     .evento-ricerca {
         width: 33.3333%;
     }
+
+    .grid-eventi {
+        width: 100%;
+
+        .evento-ricerca {
+            width: 33.3333%;
+            float: left;
+            height: 220px;
+        }
+
+        .evento-ricerca-inner {
+            width: 185px;
+            display: block;
+
+            .immgg {
+                width: 100%;
+                height: 114px;
+                margin-bottom: 30px;
+                @include background-size(cover);
+                background-position: center center;
+            }
+
+            h2 {
+                color: $title;
+                font-family: "BookAntiqua";
+                font-size: 15px;
+                line-height: 100%;
+                margin-bottom: 19px;
+            }
+
+            h3 {
+                font-size: 12px;
+                color: $description;
+            }
+        }
+        
+        &:after {
+            content: '';
+            display: table;
+            clear: both;
+        }
+    }
 }
 
 .has-tooltip {
@@ -2585,4 +2786,60 @@ footer {
     &.open {
         @include transform(scale(1));
     }
+}
+
+
+#searchtext {
+    font-size: 18px;
+    font-family: "BookAntiqua";
+    font-weight: bold;
+    line-height: 120%;
+    color: #929292;
+    display: none;
+    border: 0;
+    outline: none;
+    font-size: 32px;
+}
+
+.past-spacer {
+    width: 100%;
+    clear: both;
+    height: 74px;
+}
+
+.visita-descr {
+    font-size: 13px;
+    line-height: 100%;
+    color: $description;
+    margin-bottom: 14px;
+}
+
+#visitacontent {
+    width: 813px;
+    height: 156px;
+    line-height: 120%;
+    color: #838383;
+    border: 1px solid #c8c8c8;
+    margin-bottom: 30px;
+    resize: none;
+}
+
+.invia-visita {
+    width: 813px;
+    text-align: right;
+    margin-bottom: 25px;
+
+    span {
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: underline;
+        color: $description;
+    }
+}
+
+.visitatel {
+    font-family: "LatoBlack";
+    font-size: 13px;
+    color: $description;
+    margin-bottom: 65px;
 }

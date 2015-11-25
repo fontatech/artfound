@@ -248,9 +248,6 @@ INSERT INTO af_label_translations VALUES (81, 2, "Questo sito web utilizza i coo
 INSERT INTO af_labels VALUES (82, "clicktoenter");
 INSERT INTO af_label_translations VALUES (82, 1, "Clicca per entrare");
 INSERT INTO af_label_translations VALUES (82, 2, "Clicca per entrare");
-INSERT INTO af_labels VALUES (83, "registrazionedescription2");
-INSERT INTO af_label_translations VALUES (83, 1, "Compilare i campi a fianco con le proprie informazioni per essere abilitati a: <br /> <br /> <div class=\"borderleft\">salvare gli <b>Eventi preferiti</b><br /> ricevere notifiche su quelli imminenti<br /> partecipare alle <b>Inaugurazioni</b><br /> partecipare alle <b>Conversazioni</b><br /> scaricare la <b>Documentazione speciale</b></div>");
-INSERT INTO af_label_translations VALUES (83, 2, "Compilare i campi a fianco con le proprie informazioni per essere abilitati a: <br /> <br /> <div class=\"borderleft\">salvare gli <b>Eventi preferiti</b><br /> ricevere notifiche su quelli imminenti<br /> partecipare alle <b>Inaugurazioni</b><br /> partecipare alle <b>Conversazioni</b><br /> scaricare la <b>Documentazione speciale</b></div>");
 
 INSERT INTO af_labels VALUES (84, "campiobbligatori");
 INSERT INTO af_label_translations VALUES (84, 1, "*tutti i campi sono necessari");
@@ -313,6 +310,56 @@ INSERT INTO af_label_translations VALUES (97, 2, "EVENTI");
 INSERT INTO af_labels VALUES (98, "cambiaricerca");
 INSERT INTO af_label_translations VALUES (98, 1, "Cambia la ricerca e premi INVIO.");
 INSERT INTO af_label_translations VALUES (98, 2, "Cambia la ricerca e premi INVIO.");
+
+INSERT INTO af_labels VALUES (99, "richiediinfoopera");
+INSERT INTO af_label_translations VALUES (99, 1, "RICHIEDI INFORMAZIONI SU QUEST'OPERA");
+INSERT INTO af_label_translations VALUES (99, 2, "RICHIEDI INFORMAZIONI SU QUEST'OPERA");
+
+INSERT INTO af_labels VALUES (100, "voglioessercontattato");
+INSERT INTO af_label_translations VALUES (100, 1, "Voglio essere contattato per ricevere maggiori informazioni.");
+INSERT INTO af_label_translations VALUES (100, 2, "Voglio essere contattato per ricevere maggiori informazioni.");
+
+INSERT INTO af_labels VALUES (101, "interessatoacquisto");
+INSERT INTO af_label_translations VALUES (101, 1, "Sono interessato <b>all'acquisto</b> dell'opera.");
+INSERT INTO af_label_translations VALUES (101, 2, "Sono interessato <b>all'acquisto</b> dell'opera.");
+
+INSERT INTO af_labels VALUES (102, "interessatoprestito");
+INSERT INTO af_label_translations VALUES (102, 1, "Sono interessato a ricevere l'opera <b>in prestito.</b>");
+INSERT INTO af_label_translations VALUES (102, 2, "");
+
+INSERT INTO af_labels VALUES (103, "dettaglirichiesta");
+INSERT INTO af_label_translations VALUES (103, 1, "Dettagli della richiesta (opzionale)");
+INSERT INTO af_label_translations VALUES (103, 2, "Dettagli della richiesta (opzionale)");
+
+INSERT INTO af_labels VALUES (104, "contattoinviato");
+INSERT INTO af_label_translations VALUES (104, 1, "Contatto inviato correttamente blablabla");
+INSERT INTO af_label_translations VALUES (104, 2, "Contatto inviato correttamente blablabla");
+
+INSERT INTO af_labels VALUES (105, "eventPast");
+INSERT INTO af_label_translations VALUES (105, 1, "EVENTO PASSATO");
+INSERT INTO af_label_translations VALUES (105, 2, "EVENTO PASSATO");
+
+INSERT INTO af_labels VALUES (106, "contattidescr");
+INSERT INTO af_label_translations VALUES (106, 1, "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.");
+INSERT INTO af_label_translations VALUES (106, 2, "Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.");
+
+INSERT INTO af_labels VALUES (107, "dativisita");
+INSERT INTO af_label_translations VALUES (107, 1, "Data e orario della visita preferiti e motivo della richiesta di visita");
+INSERT INTO af_label_translations VALUES (107, 2, "Data e orario della visita preferiti e motivo della richiesta di visita");
+
+INSERT INTO af_labels VALUES (108, "riservataregistrati");
+INSERT INTO af_label_translations VALUES (108, 1, "Richiesta riservata agli utenti registrati");
+INSERT INTO af_label_translations VALUES (108, 2, "Richiesta riservata agli utenti registrati");
+
+INSERT INTO af_labels VALUES (109, "visitaesclusiva");
+INSERT INTO af_label_translations VALUES (109, 1, "VISITA ESCLUSIVA DELLA GALLERIA SU APPUNTAMENTO");
+INSERT INTO af_label_translations VALUES (109, 2, "VISITA ESCLUSIVA DELLA GALLERIA SU APPUNTAMENTO");
+
+INSERT INTO af_labels VALUES (110, "visitatel");
+INSERT INTO af_label_translations VALUES (110, 1, "E' possibile fissare la visita telefonicamente contattando il numero +39 0000 0000");
+INSERT INTO af_label_translations VALUES (110, 2, "E' possibile fissare la visita telefonicamente contattando il numero +39 0000 0000");
+
+
 
 
 
@@ -490,8 +537,8 @@ INSERT INTO af_events VALUES (
     3,
     'Sandro Marti',
     'evento2.jpg',
-    '2015-09-01 00:00:00',
-    '2015-11-22 00:00:00',
+    '2015-10-01 00:00:00',
+    '2015-12-22 00:00:00',
     CURRENT_TIMESTAMP,
     'evento-3',
     4,
@@ -533,8 +580,8 @@ INSERT INTO af_events VALUES (
     4,
     'Michael Tabis',
     'evento1.jpg',
-    '2015-12-01 00:00:00',
-    '2015-12-20 00:00:00',
+    '2016-01-01 00:00:00',
+    '2016-02-20 00:00:00',
     CURRENT_TIMESTAMP,
     'evento-4',
     4,

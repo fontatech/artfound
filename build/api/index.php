@@ -230,7 +230,9 @@ $app->get('/evento/:lang/:permalink', function ($lang, $permalink) {
         'esposizione' => $evt->getEsposizione($lang_id),
         'inaugurazione' => $evt->getInaugurazione($lang_id),
         'conversazione' => $evt->getConversazione($lang_id),
-        'type' => $evt->getType()
+        'type' => $evt->getType(),
+        'isPast' => $evt->getType() == 'PAST',
+        'isFuture' => $evt->getType() == 'FUTURE'
     );
 
     $resp['artisti']        = $evt->getArtisti();
@@ -418,19 +420,28 @@ $app->get('/logout', function () {
 $app->get('/user', function () {
     if (isset($_SESSION['logged'])) {
         $user = User::getLoggedUser();
-        $resp = array(
-            'isLogged' => true,
-            'name'     => $user->name,
-            'email'    => $user->email,
-            'eventi'   => array()
-        );
+
+        if ($user) {
+            $resp = array(
+                'isLogged' => true,
+                'name'     => $user->name,
+                'email'    => $user->email,
+                'eventi'   => array()
+            );
+        } else {
+            $resp = array(
+                'isLogged' => false,
+                'name'     => null,
+                'email'    => null,
+                'eventi'   => array()
+            );
+        }
     } else {
         $resp = array(
             'isLogged' => false,
             'name'     => null,
             'email'    => null,
             'eventi'   => array()
-
         );
     }
 
@@ -527,8 +538,10 @@ $app->get('/ricerca/:lang/:query', function ($lang, $query) {
         if (strpos(strtolower($a->getTitle($lang_id)), strtolower($query))) {
             $imgs = OperaImage::find_all_by_id_artwork($a->id_artwork);
             $resp['artworks'][] = array(
-                'title' => $a->getTitle($lang_id),
-                'image' => '/upload/opere/' . $imgs[0]->image
+                'title'     => $a->getTitle($lang_id),
+                'image'     => '/upload/opere/' . $imgs[0]->image,
+                'artist'    => $a->getArtist()->name,
+                'permalink' => $a->getArtist()->permalink
             );
         }
     }
@@ -618,6 +631,18 @@ $app->get('/preferences/:evento', function ($evento) use ($app) {
     }
 
     echo json_encode($resp);
+});
+
+$app->post('/infoopera', function () use ($app) {
+    $req = $app->request;
+
+    $rectelephone = $req->post('rectelephone');
+    $dettagli = $req->post('dettagli');
+    $maggioriinfo = $req->post('maggioriinfo');
+    $acquisto = $req->post('acquisto');
+    $prestito = $req->post('prestito');
+
+    returnTrue();
 });
 
 $app->run();

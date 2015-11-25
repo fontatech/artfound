@@ -55,7 +55,6 @@ Thorax.LayoutView.extend(
 
     openLoginPopup: (evt) ->
         evt.preventDefault()
-        console.log 'ok'
         this.popup = new Thorax.Views['loginpopup']()
         this.popup.render()
 
@@ -80,14 +79,17 @@ Thorax.LayoutView.extend(
         this.popup.$el.appendTo document.body
 
     doLogout: () ->
+        that = this
         $.ajax(
             url: '/api/logout'
             dataType: 'json'
             success: (resp) ->
                 if resp.status == 'OK'
                     window.app.isLoggedUser = false
+                    that.listenToOnce(window.app.UserInstance, 'sync', () ->
+                        Backbone.history.stop()
+                        Backbone.history.start()
+                    )
                     window.app.UserInstance.fetch()
-                    Backbone.history.stop()
-                    Backbone.history.start()
         )
 )

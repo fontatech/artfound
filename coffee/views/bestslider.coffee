@@ -10,6 +10,7 @@ Thorax.View.extend(
     events:
         'click .goright': 'goright'
         'click .goleft': 'goleft'
+        'click .infopoint': 'openPopup'
 
     goright: (evt) ->
         return false if this.running
@@ -87,4 +88,13 @@ Thorax.View.extend(
                 if id2.isDisponible
                     this.$el.find('.bestslider .disponibility-inner').text id2.isDisponible
 
+    openPopup: (evt) ->
+        evt.preventDefault()
+        app.layout.popup = new Thorax.Views['operepopup']({} =
+            operaTitle: this.$el.find('.legend h2').text()
+            operaAuthor: this.$el.find('.legend a').text()
+        )
+        app.layout.popup.render()
+
+        app.layout.popup.$el.appendTo document.body
 )

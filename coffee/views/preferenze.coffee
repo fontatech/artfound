@@ -19,8 +19,6 @@ Thorax.View.extend(
             afterTimeout = () ->
                 that.$el.find('.popup-inner').addClass 'open'
 
-            console.log that.preferenze
-
             setTimeout afterTimeout, 50
 
     closePopup: (evt) ->
@@ -39,7 +37,6 @@ Thorax.View.extend(
 
     checkLabel: (evt) ->
         evt.preventDefault()
-
         $(evt.target).toggleClass 'checked'
 
 )

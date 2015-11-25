@@ -5,8 +5,6 @@ window.app.UserModel = Thorax.Model.extend(
 
     initialize: () ->
         that = this
-        this.listenTo this, 'sync', () ->
-            console.log that.toJSON()
 )
 
 window.app.UserInstance = new app.UserModel

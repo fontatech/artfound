@@ -12,6 +12,13 @@ $(() ->
             when 'PAST' then return ''
     )
 
+    Handlebars.registerHelper('eventTypeAll', (type, currentText, futureText, pastText) ->
+        switch type
+            when 'FUTURE' then return new Handlebars.SafeString '<div class="tl-eventtype">' + futureText + '</div>'
+            when 'PRESENT' then return new Handlebars.SafeString '<div class="tl-eventtype">' + currentText + '</div>'
+            when 'PAST' then return new Handlebars.SafeString '<div class="tl-eventtype">' + pastText + '</div>'
+    )
+
     Handlebars.registerHelper('getClass', (id) ->
         return 'current' if id == 1
         return 'next' if id == 2

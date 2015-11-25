@@ -5,6 +5,9 @@ Thorax.View.extend(
     template: Handlebars.compile($('#opere-layout').html())
     timeline: null
 
+    events:
+        'click .richiedi': 'openPopup'
+
     initialize: () ->
         that = this
         this.trad = Translator.getTranslations()
@@ -22,6 +25,17 @@ Thorax.View.extend(
             that.bestslider.render()
             that.$el.find('.timeline-container').html that.timeline.el
             that.$el.find('.bestslider-container').html that.bestslider.el
+
+
+    openPopup: (evt) ->
+        evt.preventDefault()
+        app.layout.popup = new Thorax.Views['operepopup']({} =
+            operaTitle: this.$el.find('.legend h2').text()
+            operaAuthor: this.$el.find('.legend a').text()
+        )
+        app.layout.popup.render()
+
+        app.layout.popup.$el.appendTo document.body
 )
 
 

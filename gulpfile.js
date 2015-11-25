@@ -31,7 +31,7 @@ gulp.task('default', function () {
             outputStyle: 'compressed'
         }));
 
-    gulp.src('./templates/**/*.html')
+    gulp.src('./templates/index.html')
         .pipe(htmlInclude())
         .pipe(minifyHTML(minifyOpts))
         .pipe(gulp.dest('./' + devdir + '/'));

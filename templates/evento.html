@@ -2,7 +2,7 @@
     <iframe id="download"></iframe>
 
     <div class="eventtype-container">
-        {{eventType type trad.eventCurrent trad.eventFiuciur}}
+        {{eventTypeAll type trad.eventCurrent trad.eventFiuciur trad.eventPast}}
     </div>
 
     <h1>{{trad.evento}}</h1>
@@ -35,11 +35,14 @@
             <p>{{{conversazione}}}</p>
         </div>
 
+        {{#unless isPast}}
         <div class="notifiche open-checkboxes"></div>
+        {{/unless}}
 
         <div class="clearfix"></div>
     </div>
 
+    {{#unless isPast}}
     <div class="esposizione-data">
         <a class="rsvp" href="/contatto/{{id}}">R.S.V.P.</a>
     </div>
@@ -51,12 +54,20 @@
     <div class="conversazione-data">
         <div class="open-checkboxes">{{trad.iscrizioneRichiesta}}</div>
     </div>
+    {{/unless}}
+
+
+    {{#if isPast}}
+    <div class="past-spacer"></div>
+    {{/if}}
 
     <div class="clearfix"></div>
 
+    {{#unless isFuture}}
     <div class="littletitle">{{trad.opereesposte}}</div>
 
     <div class="bestslider-container"></div>
+    {{/unless}}
 
     <div class="documentazione-container">
         <div class="littletitle">{{trad.documentazione}}</div>
