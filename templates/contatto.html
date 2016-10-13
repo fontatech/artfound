@@ -5,26 +5,37 @@
     <hr class="separator" />
 
     <div class="littletitle">{{trad.informazionigenerali}}</div>
-    <h2 class="page-description gen">{{trad.compilareicampi}}</h2>
 
-    <div class="form-gen">
-        <div class="gen-col1">
-            <label>{{trad.nomecognome}}</label>
-            <input type="text" id="gen-nomecognome" />
-            <label>{{trad.email}}</label>
-            <input type="text" id="gen-email" />
-            <label>{{trad.rectelefonico}}</label>
-            <input type="text" id="gen-email" />
+    <div class="gen-form-container">
+
+        <div class="acknowledgement">
+            <h2 class="page-description gen">{{{trad.acknowledgementgenerali}}}</h2>
+            <div class="ritorna">{{{trad.ritorna}}}</div>
         </div>
 
-        <div class="gen-col2">
-            <label>{{trad.richiestacomunicazione}}</label>
-            <textarea id="gen-richiesta"></textarea>
+        <div class="noacknowledgement">
+            <h2 class="page-description gen">{{trad.compilareicampi}}</h2>
+
+            <div class="form-gen">
+                <div class="gen-col1">
+                    <label>{{trad.nomecognome}}</label>
+                    <input type="text" id="gen-nomecognome" />
+                    <label>{{trad.email}}</label>
+                    <input type="text" id="gen-email" />
+                    <label>{{trad.rectelefonico}}</label>
+                    <input type="text" id="gen-telefono" />
+                </div>
+
+                <div class="gen-col2">
+                    <label>{{trad.richiestacomunicazione}}</label>
+                    <textarea id="gen-richiesta">{{#if eventId}}Bla bla testo bla {{decname eventId}}{{/if}}</textarea>
+                </div>
+
+                <div id="gen-invio"><a href="#" class="invia-generali">{{trad.invio}}</a></div>
+
+                <div class="clearfix"></div>
+            </div>
         </div>
-
-        <div id="gen-invio"><a href="#">{{trad.invio}}</a></div>
-
-        <div class="clearfix"></div>
     </div>
 
     <hr class="separator" />
@@ -33,12 +44,21 @@
     <h2 class="page-description gen">{{trad.riservataregistrati}}</h2>
 
     {{#if isLogged}}
-        <div class="visita-descr">{{trad.dativisita}}</div>
-        <textarea id="visitacontent"></textarea>
-        <div class="invia-visita">
-            <span>Invio</span>
-        </div>
-        <div class="visitatel">{{trad.visitatel}}</div>
+        <div class="vis-form-container">
+            <div class="acknowledgement">
+                <h2 class="page-description gen">{{{trad.acknowledgementvisita}}}</h2>
+                <div class="ritorna2">{{{trad.ritorna}}}</div>
+            </div>
+
+            <div class="noacknowledgement">
+                <div class="visita-descr">{{trad.dativisita}}</div>
+                <textarea id="visitacontent"></textarea>
+                <div class="invia-visita">
+                    <span>Invio</span>
+                </div>
+            </div>
+
+            <div class="visitatel">{{trad.visitatel}}</div>
     {{else}}
     <div class="form-reg">
         <div class="col2">

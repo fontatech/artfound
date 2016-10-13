@@ -46,6 +46,32 @@ window.app.router = Backbone.Router.extend(
 
         setTimeout afterTimeout, 800
 
+    transitionCont: (newView, oldView, append, remove, complete) ->
+        afterTimeout = () ->
+            show = () ->
+                $('#app-container').removeClass 'padded-top'
+                $('#loader').removeClass 'open'
+                newView.$el.addClass 'visible' if newView
+            remove()
+            complete()
+            $('.main-menu a[href="' + location.pathname + '"]').addClass 'active'
+
+            setTimeout show, 100
+
+        $(document.body).scrollTo 200, {} =
+            duration: 600
+
+        append()
+        oldView.$el.removeClass 'visible' if oldView
+        $('#app-container').addClass 'padded-top'
+        $('#loader').addClass 'open'
+        $('.main-menu a').removeClass 'active'
+
+        if app.isHome
+            app._goToNonHome()
+
+        setTimeout afterTimeout, 800
+
     homeTransition: (newView, oldView, append, remove, complete) ->
         afterTimeout = () ->
             show = () ->
@@ -54,7 +80,6 @@ window.app.router = Backbone.Router.extend(
                 newView.$el.addClass 'visible' if newView
             remove()
             complete()
-            $('#main-container').css 'height', '2240px'
             $('.main-menu a[href="' + location.pathname + '"]').addClass 'active'
             app._goToHomeLayout()
 
@@ -68,15 +93,6 @@ window.app.router = Backbone.Router.extend(
         $('#app-container').addClass 'padded-top'
         $('#loader').addClass 'open'
         $('.main-menu a').removeClass 'active'
-
-        #Footer restyle (change for responsive)
-        $('footer .inner').css 'margin-left', '261px'
-        $('footer .inner').css 'width', '1085px'
-        $('footer .inner .col1').css 'width', '335px'
-        $('footer .inner .col2').css 'width', '626px'
-        $('footer .subcol-1').css 'width', '187px'
-        $('footer .subcol-2').css 'width', '214px'
-        $('footer .subcol-3').css 'width', '80px'
 
         setTimeout afterTimeout, 800
 
@@ -137,9 +153,11 @@ window.app.router = Backbone.Router.extend(
         app.layout.setView new Thorax.Views['contatto'](), {} =
             transition: this.transition
 
-    contattoLink: (contatto) ->
-        app.layout.setView new Thorax.Views['contatto'](), {} =
-            transition: this.transition
+    contattoLink: (evento) ->
+        app.layout.setView new Thorax.Views['contatto']({} =
+            eventId: evento
+        ), {} =
+            transition: this.transitionCont
 
 
 

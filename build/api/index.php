@@ -16,6 +16,7 @@ ActiveRecord\Config::initialize(function ($cfg) {
     $cfg->set_model_directory('models');
     $cfg->set_connections(array(
         'development' => 'mysql://root:caligola@localhost/artfound'
+        //'development' => 'mysql://admin:Abiepa2u@sql.artfoundtrust.com.cloud.seeweb.it/artfound'
     ));
 
     $cfg->set_default_connection('development');
@@ -23,6 +24,10 @@ ActiveRecord\Config::initialize(function ($cfg) {
 
 $app = new \Slim\Slim();
 $app->log->setEnabled(true);
+
+////// Costanti per l'applicazione
+const INFO_MAIL = 'mb@gbrweb.it';
+const SENDER_MAIL = 'info@artfoundtrust.com';
 
 /**********************************************
  * TRANSLATIONS
@@ -57,11 +62,18 @@ $app->get('/translations', function () {
 $app->get('/artists', function () {
     $data = Artist::all();
     $resp = array(
-        'artists' => array()
+        'artists' => array(),
+        'letters' => array()
     );
 
     foreach ($data as $a) {
         $exploded = explode(' ', $a->name);
+        $pts = explode(' ', $a->name);
+        $first = substr($pts[1], 0, 1);
+
+        if (!in_array($first, $resp['letters'])) {
+            $resp['letters'][] = $first;
+        }
 
         $resp['artists'][] = array(
             'name' => $a->name,
@@ -71,6 +83,8 @@ $app->get('/artists', function () {
             'permalink' => $a->permalink
         );
     }
+
+    sort($resp['letters']);
 
     echo json_encode($resp);
 });
@@ -222,6 +236,39 @@ $app->get('/evento/:lang/:permalink', function ($lang, $permalink) {
 
     $lang_id = $lang->id_language;
 
+    $prefs = array(
+        'inaugurazione' => false,
+        'conversazioni' => false,
+        'notifiche'     => false,
+        'preferiti'     => false
+    );
+    if (isset($_SESSION['logged'])) {
+        $user = User::getLoggedUser();
+        $inaugurazione = Preference::find_by_id_event_and_id_user_and_preference($evt->id_event, $user->id_user, 'inaugurazione');
+
+        if ($inaugurazione && $inaugurazione->value == 1) {
+            $prefs['inaugurazione'] = true;
+        }
+
+        $inaugurazione = Preference::find_by_id_event_and_id_user_and_preference($evt->id_event, $user->id_user, 'conversazioni');
+
+        if ($inaugurazione && $inaugurazione->value == 1) {
+            $prefs['conversazioni'] = true;
+        }
+
+        $inaugurazione = Preference::find_by_id_event_and_id_user_and_preference($evt->id_event, $user->id_user, 'preferiti');
+
+        if ($inaugurazione && $inaugurazione->value == 1) {
+            $prefs['preferiti'] = true;
+        }
+
+        $inaugurazione = Preference::find_by_id_event_and_id_user_and_preference($evt->id_event, $user->id_user, 'notifiche');
+
+        if ($inaugurazione && $inaugurazione->value == 1) {
+            $prefs['notifiche'] = true;
+        }
+    }
+
     $resp = array(
         'name' => $evt->getTitle($lang_id),
         'description' => $evt->getDescr($lang_id),
@@ -232,7 +279,8 @@ $app->get('/evento/:lang/:permalink', function ($lang, $permalink) {
         'conversazione' => $evt->getConversazione($lang_id),
         'type' => $evt->getType(),
         'isPast' => $evt->getType() == 'PAST',
-        'isFuture' => $evt->getType() == 'FUTURE'
+        'isFuture' => $evt->getType() == 'FUTURE',
+        'preferenze' => $prefs
     );
 
     $resp['artisti']        = $evt->getArtisti();
@@ -280,8 +328,8 @@ $app->get('/opere-proprietarie/:lang', function ($lang) {
                 'id'           => $index,
                 'titolo'       => $o->getTitle($lang_id),
                 'artista'      => $o->getArtist()->name,
-                'descrizione'  => '',
-                'misure'       => '',
+                'descrizione'  => $o->getDescription($lang_id),
+                'misure'       => $o->measurements,
                 'artpermalink' => '/artista/' . $o->getArtist()->permalink,
                 'isDisponible' => $o->getIsDisponible($lang_id)
             );
@@ -331,7 +379,8 @@ $app->get('/homepage/:lang', function ($lang) {
                 'title' => $evt->getTitle($lang_id),
                 'description' => $evt->getDescr($lang_id),
                 'img'   => '/upload/eventi/' . $evt->main_image,
-                'permalink' => '/event/' . $evt->permalink
+                'permalink' => '/event/' . $evt->permalink,
+                'date' => $evt->getLangDate($lang_id)
             );
         }
     }
@@ -417,16 +466,33 @@ $app->get('/logout', function () {
 /**********************************************
  * USER DATA
  **********************************************/
-$app->get('/user', function () {
+$app->get('/user/:lang', function ($lang) {
     if (isset($_SESSION['logged'])) {
         $user = User::getLoggedUser();
 
         if ($user) {
+            $lang    = Language::find_by_shortname($lang);
+            $lang_id = $lang->id_language;
+
+            $resp = array();
+            $eventi = Preference::find_all_by_id_user_and_preference($user->id_user, 'preferiti');
+
+            foreach ($eventi as $e) {
+                $evt = Event::find_by_id_event($e->id_event);
+
+                if ($e->value == 1) {
+                    $resp[] = array(
+                        'permalink' => $evt->permalink,
+                        'name' => strtoupper($evt->getTitle($lang_id)) . ' ' . $evt->getDescr($lang_id)
+                    );
+                }
+            }
+
             $resp = array(
                 'isLogged' => true,
                 'name'     => $user->name,
                 'email'    => $user->email,
-                'eventi'   => array()
+                'eventi'   => $resp
             );
         } else {
             $resp = array(
@@ -572,7 +638,12 @@ $app->post('/preferences/:evento', function ($evento) use ($app) {
         returnFalse();
     }
 
-    $preferenze = $req->post('preferenze');
+    $preferenze = array(
+        'inaugurazione' => $req->post('inaugurazione') === 'true' ? 1 : 0,
+        'conversazioni' => $req->post('conversazione') === 'true' ? 1 : 0,
+        'notifiche'     => $req->post('notifiche') === 'true' ? 1 : 0,
+        'preferiti'     => $req->post('preferiti') === 'true' ? 1 : 0
+    );
     $types      = PreferenceType::all();
 
     Preference::table()->delete(array(
@@ -597,7 +668,6 @@ $app->post('/preferences/:evento', function ($evento) use ($app) {
  * API DI RITORNO PREFERENZE UTENTE
  **********************************************/
 $app->get('/preferences/:evento', function ($evento) use ($app) {
-    $_SESSION['logged'] = 1;
     if (!isset($_SESSION['logged'])) {
         returnFalse();
     }
@@ -643,6 +713,52 @@ $app->post('/infoopera', function () use ($app) {
     $prestito = $req->post('prestito');
 
     returnTrue();
+});
+
+$app->post('/inviagenerali', function () use ($app) {
+    $req = $app->request;
+
+    $nomecognome = $req->post('nomecognome');
+    $richiesta = $req->post('richiesta');
+    $email = $req->post('email');
+    $telefono = $req->post('telefono');
+
+    $subject = 'Richiesta di informazioni generali';
+    $html = "Nome e cognome: " . $nomecognome . "\n" .
+            "E-Mail: " . $email . "\n" .
+            "Telefono: " . $telefono . "\n" .
+            "Richiesta: \n" . $richiesta;
+    $from = "From: Info Artfoundtrust.com <" . SENDER_MAIL . ">\r\n";
+
+    mail(INFO_MAIL, $subject, $html, $from);
+
+    echo json_encode(array(
+        'status' => 'OK',
+        'text' => $html
+    ));
+});
+
+$app->post('/inviavisita', function () use ($app) {
+    $req = $app->request;
+
+    $user  = User::find_by_id_user($_SESSION['logged']);
+
+    $nomecognome = $user->name;
+    $richiesta = $req->post('richiesta');
+    $email = $user->email;
+
+    $subject = 'Richiesta di visita esclusiva';
+    $html = "Nome e cognome: " . $nomecognome . "\n" .
+            "E-Mail: " . $email . "\n" .
+            "Richiesta: \n" . $richiesta;
+    $from = "From: Info Artfoundtrust.com <" . SENDER_MAIL . ">\r\n";
+
+    mail(INFO_MAIL, $subject, $html, $from);
+
+    echo json_encode(array(
+        'status' => 'OK',
+        'text' => $html
+    ));
 });
 
 $app->run();

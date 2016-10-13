@@ -17,9 +17,19 @@ Thorax.View.extend(
         that = this
         this.trad = Translator.getTranslations()
 
+        vWidth = app.getViewportWidth()
+
+        if vWidth < 900
+            top = document.body.scrollTop || document.documentElement.scrollTop
+        else
+            top = 0
+
         this.listenTo this, 'rendered', (evt) ->
             afterTimeout = () ->
                 that.$el.find('.popup-inner').addClass 'open'
+
+            that.$el.css 'top', top
+            that.el.offsetLeft
 
             setTimeout afterTimeout, 50
 

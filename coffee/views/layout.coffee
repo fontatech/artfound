@@ -16,6 +16,7 @@ Thorax.LayoutView.extend(
         'click .logout': 'doLogout'
         'click .miei-eventi': 'openMieieventiPopup'
         'click .ricerca': 'openRicercaPopup'
+        'click .menumobi': 'openMobiMenu'
 
     initialize: () ->
         that = this
@@ -55,6 +56,8 @@ Thorax.LayoutView.extend(
 
     openLoginPopup: (evt) ->
         evt.preventDefault()
+        $('.menumobi, .openmobi').removeClass 'open'
+
         this.popup = new Thorax.Views['loginpopup']()
         this.popup.render()
 
@@ -62,6 +65,8 @@ Thorax.LayoutView.extend(
 
     openMieieventiPopup: (evt) ->
         evt.preventDefault()
+        $('.menumobi, .openmobi').removeClass 'open'
+
         this.popup = new Thorax.Views['mieieventipopup'](
             eventi: app.UserInstance.get 'eventi'
         )
@@ -85,6 +90,7 @@ Thorax.LayoutView.extend(
             dataType: 'json'
             success: (resp) ->
                 if resp.status == 'OK'
+                    $('.menumobi, .openmobi').removeClass 'open'
                     window.app.isLoggedUser = false
                     that.listenToOnce(window.app.UserInstance, 'sync', () ->
                         Backbone.history.stop()
@@ -92,4 +98,10 @@ Thorax.LayoutView.extend(
                     )
                     window.app.UserInstance.fetch()
         )
+
+    openMobiMenu: (evt) ->
+        evt.preventDefault()
+
+        this.$el.find('.menumobi').toggleClass 'open'
+        this.$el.find('.openmobi').toggleClass 'open'
 )

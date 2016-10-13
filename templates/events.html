@@ -3,26 +3,30 @@
     <h2 class="page-description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum messa justo sit amet risus.</h2>
 
     {{#current}}
-    <div class="event current" style="background-image: url({{img}});">
-        <div class="inner-block">
+    <div class="event current">
+        <img class="parallaxer" src="{{img}}" />
+
+        <a href="/event/{{permalink}}" class="inner-block">
             <div class="event-type">{{../trad.eventCurrent}}</div>
             <div class="event-title">{{title}}</div>
             <div class="event-date">{{date}}</div>
 
-            <a class="arrow right goto-event" href="/event/{{permalink}}"></a>
-        </div>
+            <div class="arrow right goto-event"></div>
+        </a>
     </div>
     {{/current}}
 
     {{#future}}
-    <div class="event fiuciur" style="background-image: url({{img}});">
-        <div class="inner-block">
+    <div class="event fiuciur">
+        <img class="parallaxer" src="{{img}}" />
+
+        <a href="/event/{{permalink}}" class="inner-block">
             <div class="event-type">{{../trad.eventFiuciur}}</div>
             <div class="event-title">{{title}}</div>
             <div class="event-date">{{date}}</div>
 
-            <a class="arrow right goto-event" href="/event/{{permalink}}"></a>
-        </div>
+            <div class="arrow right goto-event"></div>
+        </a>
     </div>
     {{/future}}
 

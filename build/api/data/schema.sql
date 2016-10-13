@@ -1,9 +1,8 @@
 -- Artfound Database schema
 
-DROP DATABASE artfound;
+-- DROP DATABASE artfound;
 CREATE DATABASE artfound;
 USE artfound;
-
 
 -- Tabella delle lingue disponibili
 CREATE TABLE IF NOT EXISTS af_languages (

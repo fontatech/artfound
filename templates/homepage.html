@@ -4,12 +4,14 @@
 
     <hr class="separator" />
 
-    <h3>{{trad.eventoincorso}}</h3>
+    <h3 class="titolinohome">{{trad.eventoincorso}}</h3>
 
     {{#incorso}}
         <div class="incorso">
             <a href="{{permalink}}">
-                <div class="immage" style="background-image: url({{img}})"></div>
+                <div class="immage">
+                    <div class="img-container-i parallaxer-mobi" style="background-image: url({{img}});"></div>
+                </div>
                 <div class="incorso-title">{{title}}</div>
                 <div class="incorso-descr">{{description}}</div>
             </a>
@@ -18,24 +20,35 @@
 
     <hr class="separator" />
 
+    <h3 class="titolinohome">{{trad.eventofuturo}}</h3>
+
     {{#futuro}}
         <div class="futuro">
             <a href="{{permalink}}">
-                <div class="immage" style="background-image: url({{img}})"></div>
+                <div class="immage">
+                    <div class="img-container-i parallaxer-mobi" style="background-image: url({{img}});"></div>
+                </div>
                 <div class="incorso-title futuro">{{title}}</div>
                 <div class="incorso-descr">{{description}}</div>
             </a>
         </div>
     {{/futuro}}
 
+    <hr class="separator mobile-only" />
+    <div class="clearfix"></div>
+
     <a href="/opere-proprietarie" class="home-col1">
-        <img src="/img/opereprop.jpg" />
+        <div class="img-home">
+            <div class="i-h-inner" style="background-image: url(/img/opereprop.jpg)"></div>
+        </div>
         <h4>{{trad.opereprop}}</h4>
         <h5>{{trad.operepropdesc}}</h5>
     </a>
 
     <a href="/eventi" class="home-col2">
-        <img src="/img/eventihome.jpg" />
+        <div class="img-home">
+            <div class="i-h-inner" style="background-image: url(/img/eventihome.jpg)"></div>
+        </div>
         <h4>{{trad.cronologia}}</h4>
         <h5>{{trad.cronologiadesc}}</h5>
     </a>

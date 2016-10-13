@@ -10,9 +10,15 @@ Thorax.View.extend(
         'click .square': 'changeElement'
         'click .goleft': 'goleft'
         'click .goright': 'goright'
+        'click .tooltip': 'stopMass'
 
     initialize: () ->
         this.trad = Translator.getTranslations()
+
+
+    stopMass: (evt) ->
+        evt.stopPropagation()
+        evt.preventDefault()
 
     changeElement: (evt) ->
         if !this.controllable
@@ -30,6 +36,8 @@ Thorax.View.extend(
 
         if next.attr('data-rel') != curr.attr('data-rel')
             this.controllable = false
+            next.insertAfter(curr)
+            next.get(0).offsetTop
             next.get(0).className = 'element on'
             curr.get(0).className = 'element on off'
             that.$el.find('.square').removeClass 'active'
@@ -50,12 +58,15 @@ Thorax.View.extend(
             that.controllable = true
 
         count = that.$el.find('.element').length
-        next  = curr.prev()
+        relToFind = curr.attr('data-rel') - 1
+        relToFind = count if relToFind == 0
 
-        next  = that.$el.find('.element').last() unless next.is('.element')
+        next  = that.$el.find('.element[data-rel=' + relToFind + ']')
 
         if next.attr('data-rel') != curr.attr('data-rel')
             this.controllable = false
+            next.insertAfter(curr)
+            next.get(0).offsetTop
             next.get(0).className = 'element on'
             curr.get(0).className = 'element on off'
             that.$el.find('.square').removeClass 'active'
@@ -72,7 +83,6 @@ Thorax.View.extend(
 
         setOther = () ->
             curr.get(0).className = 'element'
-            #curr.appendTo(curr.parent())
             that.controllable = true
 
         count = that.$el.find('.element').length
@@ -82,6 +92,8 @@ Thorax.View.extend(
 
         if next.attr('data-rel') != curr.attr('data-rel')
             this.controllable = false
+            next.insertAfter(curr)
+            next.get(0).offsetTop
             next.get(0).className = 'element on'
             curr.get(0).className = 'element on off'
             that.$el.find('.square').removeClass 'active'

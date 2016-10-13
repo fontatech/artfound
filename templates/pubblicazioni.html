@@ -15,7 +15,7 @@
             <h1>{{name}}</h1>
             <div class="downloads">
                 {{#edits}}
-                    <a href="{{file}}" target="_BLANK">{{name}}</a>
+                    <a href="{{file}}" target="_BLANK" class="download" data-bypass>{{name}}</a>
                 {{/edits}}
             </div>
         </div>
@@ -23,6 +23,7 @@
 
     {{#raccolte}}
         <div class="raccolta visible">
+            <img src="{{img}}" class="mobile-only fullimage" />
             <div class="col-sx">
                 <h1>{{title}}</h1>
                 <p>{{{subtitle}}}</p>

@@ -4,32 +4,9 @@
 
     <div class="select-artists">
         <span class="select active" data-letter="ALL">{{trad.all}}</span> - 
-        <span class="select" data-letter="A">A</span> - 
-        <span class="select" data-letter="B">B</span> - 
-        <span class="select" data-letter="C">C</span> - 
-        <span class="select" data-letter="D">D</span> - 
-        <span class="select" data-letter="E">E</span> - 
-        <span class="select" data-letter="F">F</span> - 
-        <span class="select" data-letter="G">G</span> - 
-        <span class="select" data-letter="H">H</span> - 
-        <span class="select" data-letter="I">I</span> - 
-        <span class="select" data-letter="J">J</span> - 
-        <span class="select" data-letter="K">K</span> - 
-        <span class="select" data-letter="L">L</span> - 
-        <span class="select" data-letter="M">M</span> - 
-        <span class="select" data-letter="N">N</span> - 
-        <span class="select" data-letter="O">O</span> - 
-        <span class="select" data-letter="P">P</span> - 
-        <span class="select" data-letter="Q">Q</span> - 
-        <span class="select" data-letter="R">R</span> - 
-        <span class="select" data-letter="S">S</span> - 
-        <span class="select" data-letter="T">T</span> - 
-        <span class="select" data-letter="U">U</span> - 
-        <span class="select" data-letter="V">V</span> - 
-        <span class="select" data-letter="W">W</span> - 
-        <span class="select" data-letter="X">X</span> - 
-        <span class="select" data-letter="Y">Y</span> - 
-        <span class="select" data-letter="Z">Z</span>
+        {{#letters}}
+            <span class="select" data-letter="{{this}}">{{this}}</span> {{#unless @last}} - {{/unless}}
+        {{/letters}}
     </div>
 
     <div class="artists-grid">
@@ -47,7 +24,8 @@
 
     <div class="clearfix"></div>
 
-    <hr class="separator" />
+    <hr class="separator mobile-only margined-top" />
+    <hr class="separator nomobile" />
 
     <div class="timeline-container"></div>
 </script>

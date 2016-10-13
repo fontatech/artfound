@@ -5,15 +5,31 @@ Thorax.View.extend(
     className: 'timeline'
     template: Handlebars.compile($('#timeline-layout').html())
     trad: null
+    moveStart: false
+    moveStop: false
 
     events:
         'click .control': 'moveTimeline'
         'click .goright': 'moveRight'
         'click .goleft': 'moveLeft'
+        'touchstart .timeline-innerinner': 'startMove'
+        'touchend .timeline-innerinner': 'endMove'
 
     initialize: () ->
         this.trad = Translator.getTranslations()
         this.setModel new app.EventsModel()
+
+        vWidth = app.getViewportWidth()
+
+        if vWidth >= 900
+            coeff = 33.333333
+            cCount = 3
+        else if vWidth >= 540
+            coeff = 50
+            cCount = 2
+        else
+            coeff = 100
+            cCount = 2
 
         this.listenTo this, 'rendered', () ->
             that = this
@@ -24,8 +40,8 @@ Thorax.View.extend(
                 that.$el.find('.control-line').css 'left', left + 'px'
 
             count = this.$el.find('.timeline-event').length
-            transform = ((100/count) * (3 - count))
-            this.$el.find('.timeline-innerinner').css 'width', (count * 33.333333) + '%'
+            transform = ((100/count) * (cCount - count))
+            this.$el.find('.timeline-innerinner').css 'width', (count * coeff) + '%'
             this.transformEvents transform
             this.$el.find('.timeline-event').css 'width', (100/count) + '%'
             setTimeout afterTimeout, 100
@@ -74,9 +90,17 @@ Thorax.View.extend(
     moveRight: (evt) ->
         count = this.$el.find('.timeline-event').length
         transform = this.$el.find('.timeline-innerinner').attr 'data-transform'
+        vWidth = app.getViewportWidth()
 
+        if vWidth >= 900
+            cCount = 3
+        else if vWidth >= 540
+            cCount = 2
+        else
+            coeff = 100
+            cCount = 1
 
-        if parseFloat(transform) > ((100/count) * (3 - count))
+        if parseFloat(transform) > ((100/count) * (cCount - count))
             transform = parseFloat(transform) - (100/count)
 
         this.transformEvents transform
@@ -89,4 +113,25 @@ Thorax.View.extend(
             transform = parseFloat(transform) + (100/count)
 
         this.transformEvents transform
+
+    startMove: (evt) ->
+        this.moveStart = evt.originalEvent.touches[0].clientX
+
+    endMove: (evt) ->
+        if this.moveStart
+            this.moveStop = evt.originalEvent.changedTouches[0].clientX
+
+            if (this.moveStop+20) < this.moveStart
+                this.moveRight()
+                return false
+
+            if (this.moveStop-20) > this.moveStart
+                this.moveLeft()
+                return false
+
+            this.moveStart = false
+            this.moveStop  = false
+            
+            return true
+
 )

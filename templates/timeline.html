@@ -3,9 +3,10 @@
         <div class="timeline-innerinner">
             {{#eventi}}
                 <div class="timeline-event" data-year="{{year}}" data-order="{{order}}">
-                    <div class="img-container {{eventClass type}}" style="background-image: url({{img}});">
+                    <a href="/event/{{permalink}}" class="img-container {{eventClass type}}">
+                        <div class="img-container-i" style="background-image: url({{img}});"></div>
                         {{eventType type ../trad.eventCurrent ../trad.eventFiuciur}}
-                    </div>
+                    </a>
 
                     <div class="content">
                         <a href="/event/{{permalink}}" class="timeline-title">{{../trad.titoloevento}} - {{title}}</a>

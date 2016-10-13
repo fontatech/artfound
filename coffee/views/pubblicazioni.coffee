@@ -15,6 +15,7 @@ Thorax.View.extend(
 
     downloadDocumentazione: (evt) ->
 
+
         if !window.app.UserInstance.get('isLogged')
             evt.preventDefault()
             app.layout.popup = new Thorax.Views['loginpopup']()

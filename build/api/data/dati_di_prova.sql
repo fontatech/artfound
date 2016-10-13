@@ -360,6 +360,35 @@ INSERT INTO af_label_translations VALUES (110, 1, "E' possibile fissare la visit
 INSERT INTO af_label_translations VALUES (110, 2, "E' possibile fissare la visita telefonicamente contattando il numero +39 0000 0000");
 
 
+INSERT INTO af_labels VALUES (111, "acknowledgementgenerali");
+INSERT INTO af_label_translations VALUES (111, 1, "La Sua comunicazione &egrave; stata inviata. Le risponderemo quanto prima.");
+INSERT INTO af_label_translations VALUES (111, 2, "La Sua comunicazione &egrave; stata inviata. Le risponderemo quanto prima.");
+
+INSERT INTO af_labels VALUES (112, "ritorna");
+INSERT INTO af_label_translations VALUES (112, 1, "Indietro");
+INSERT INTO af_label_translations VALUES (112, 2, "Indietro");
+
+INSERT INTO af_labels VALUES (113, "acknowledgementvisita");
+INSERT INTO af_label_translations VALUES (113, 1, "La Sua gentile richiesta &egrave; stata registrata. La contatteremo entro breve per conferma.");
+INSERT INTO af_label_translations VALUES (113, 2, "La Sua gentile richiesta &egrave; stata registrata. La contatteremo entro breve per conferma.");
+
+INSERT INTO af_labels VALUES (114, "deltrust");
+INSERT INTO af_label_translations VALUES (114, 1, "DEL TRUST");
+INSERT INTO af_label_translations VALUES (114, 2, "DEL TRUST");
+
+INSERT INTO af_labels VALUES (115, "iscrizioneConfermata");
+INSERT INTO af_label_translations VALUES (115, 1, "Iscrizione Confermata");
+INSERT INTO af_label_translations VALUES (115, 2, "Iscrizione Confermata");
+
+INSERT INTO af_labels VALUES (116, "eventoincorso");
+INSERT INTO af_label_translations VALUES (116, 1, "EVENTO IN CORSO");
+INSERT INTO af_label_translations VALUES (116, 2, "EVENTO IN CORSO");
+
+INSERT INTO af_labels VALUES (117, "eventofuturo");
+INSERT INTO af_label_translations VALUES (117, 1, "EVENTO FUTURO");
+INSERT INTO af_label_translations VALUES (117, 2, "EVENTO FUTURO");
+
+
 
 
 
@@ -416,14 +445,14 @@ INSERT INTO af_translations VALUES (4, 2, 'PER SOTTRAZIONE');
 INSERT INTO af_translations VALUES (5, 1, 'Intorno a maurice Blanchot e la scrittura del disastro, tra frammentazione e ricostruzione');
 INSERT INTO af_translations VALUES (5, 2, 'Intorno a maurice Blanchot e la scrittura del disastro, tra frammentazione e ricostruzione');
 -- Inaugurazione
-INSERT INTO af_translations VALUES (6, 1, '30 giugno 2015<br>ore 12:00<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano');
-INSERT INTO af_translations VALUES (6, 2, '30 giugno 2015<br>ore 12:00<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano');
+INSERT INTO af_translations VALUES (6, 1, '30 giugno 2017<br>ore 12:00<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano');
+INSERT INTO af_translations VALUES (6, 2, '30 giugno 2017<br>ore 12:00<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano');
 -- Conversazione
-INSERT INTO af_translations VALUES (7, 1, '1 - 31 luglio 2015<br>Lun. - Ven. ore xxx<br>Sab. - Dom. ore xxx<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano<br><br><b>Informazioni</b><br>Tel +39 02 0209102<br>events@artfoundtrust.com');
-INSERT INTO af_translations VALUES (7, 2, '1 - 31 luglio 2015<br>Lun. - Ven. ore xxx<br>Sab. - Dom. ore xxx<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano<br><br><b>Informazioni</b><br>Tel +39 02 0209102<br>events@artfoundtrust.com');
+INSERT INTO af_translations VALUES (7, 1, '1 - 31 luglio 2017<br>Lun. - Ven. ore xxx<br>Sab. - Dom. ore xxx<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano<br><br><b>Informazioni</b><br>Tel +39 02 0209102<br>events@artfoundtrust.com');
+INSERT INTO af_translations VALUES (7, 2, '1 - 31 luglio 2017<br>Lun. - Ven. ore xxx<br>Sab. - Dom. ore xxx<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano<br><br><b>Informazioni</b><br>Tel +39 02 0209102<br>events@artfoundtrust.com');
 -- Esposizione
-INSERT INTO af_translations VALUES (8, 1, '1 - 31 luglio 2015<br>Lun. - Ven. ore xxx<br>Sab. - Dom. ore xxx<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano<br><br><b>Informazioni</b><br>Tel +39 02 0209102<br>events@artfoundtrust.com');
-INSERT INTO af_translations VALUES (8, 2, '1 - 31 luglio 2015<br>Lun. - Ven. ore xxx<br>Sab. - Dom. ore xxx<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano<br><br><b>Informazioni</b><br>Tel +39 02 0209102<br>events@artfoundtrust.com');
+INSERT INTO af_translations VALUES (8, 1, '1 - 31 luglio 2017<br>Lun. - Ven. ore xxx<br>Sab. - Dom. ore xxx<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano<br><br><b>Informazioni</b><br>Tel +39 02 0209102<br>events@artfoundtrust.com');
+INSERT INTO af_translations VALUES (8, 2, '1 - 31 luglio 2017<br>Lun. - Ven. ore xxx<br>Sab. - Dom. ore xxx<br><br><b>Galleria</b><br>Art Found Trust<br>Corso Venezia 44, Milano<br><br><b>Informazioni</b><br>Tel +39 02 0209102<br>events@artfoundtrust.com');
 -- Abstract relatore
 INSERT INTO af_translations VALUES (9, 1, 'Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabit blandit tempus porttitor. Cras justo odio, dapibus ac facilis in, egestas eget quam. Cras justo odio.');
 INSERT INTO af_translations VALUES (9, 2, 'Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabit blandit tempus porttitor. Cras justo odio, dapibus ac facilis in, egestas eget quam. Cras justo odio.');
@@ -438,8 +467,8 @@ INSERT INTO af_translations VALUES (12, 1, 'Trascrizione integrale della Convers
 INSERT INTO af_translations VALUES (12, 2, 'Trascrizione integrale della Conversazione');
 
 -- Data in lingua
-INSERT INTO af_translations VALUES (13, 1, '1 - 28 Febbraio 2015');
-INSERT INTO af_translations VALUES (13, 2, '1 - 31 February 2015');
+INSERT INTO af_translations VALUES (13, 1, '1 - 28 Febbraio 2017');
+INSERT INTO af_translations VALUES (13, 2, '1 - 31 February 2017');
 
 
 -- Relatori
@@ -537,8 +566,8 @@ INSERT INTO af_events VALUES (
     3,
     'Sandro Marti',
     'evento2.jpg',
-    '2015-10-01 00:00:00',
-    '2015-12-22 00:00:00',
+    '2017-10-01 00:00:00',
+    '2017-12-31 00:00:00',
     CURRENT_TIMESTAMP,
     'evento-3',
     4,
@@ -579,7 +608,7 @@ INSERT INTO af_event_documents VALUES(
 INSERT INTO af_events VALUES (
     4,
     'Michael Tabis',
-    'evento1.jpg',
+    'evento2.jpg',
     '2016-01-01 00:00:00',
     '2016-02-20 00:00:00',
     CURRENT_TIMESTAMP,
@@ -621,8 +650,8 @@ INSERT INTO af_event_documents VALUES(
 
 -- Pubblicazioni
 -- Data
-INSERT INTO af_translations VALUES (17, 1, 'Febbraio 2015');
-INSERT INTO af_translations VALUES (17, 2, 'February 2015');
+INSERT INTO af_translations VALUES (17, 1, 'Febbraio 2017');
+INSERT INTO af_translations VALUES (17, 2, 'February 2017');
 -- Titolo
 INSERT INTO af_translations VALUES (18, 1, 'Raccolta in volume rilegato');
 INSERT INTO af_translations VALUES (18, 2, 'Raccolta in volume rilegato');

@@ -8,4 +8,5 @@ Thorax.View.extend(
 
     initialize: () ->
         this.trad = Translator.getTranslations()
+        $('#home-rand-img').attr 'src', '/img/home/' + app.getRandImage()
 )

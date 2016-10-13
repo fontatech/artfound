@@ -87,8 +87,8 @@ class Event extends ActiveRecord\Model {
                     'id'           => $index,
                     'titolo'       => $opera->getTitle($lang_id),
                     'artista'      => $opera->getArtist()->name,
-                    'descrizione'  => '',
-                    'misure'       => '',
+                    'descrizione'  => $opera->getDescription($lang_id),
+                    'misure'       => $opera->measurements,
                     'artpermalink' => '/artista/' . $opera->getArtist()->permalink
                 );
 

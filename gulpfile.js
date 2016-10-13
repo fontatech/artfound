@@ -46,6 +46,7 @@ gulp.task('default', function () {
             //vendorlib + 'thorax.min.js',
             vendorlib + 'thorax.js',
             vendorlib + 'jquery.mockjax.js',
+            vendorlib + 'markerwithlabel.js',
         ])
         .pipe(uglify())
         .pipe(concat('lib.js'))

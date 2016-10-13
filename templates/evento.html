@@ -1,23 +1,35 @@
 <script type="text/x-handlebars-template" id="evento">
     <iframe id="download"></iframe>
 
-    <div class="eventtype-container">
+    <div class="eventtype-container nomobile">
         {{eventTypeAll type trad.eventCurrent trad.eventFiuciur trad.eventPast}}
     </div>
 
-    <h1>{{trad.evento}}</h1>
+    <h1 class="nomobile">{{trad.evento}}</h1>
 
     <h2 class="title">{{name}}</h2>
     <p class="description">{{description}}</p>
     <div class="acura">{{trad.acura}} {{curatore}}</div>
 
-    <img class="event-bigimg" src="{{img}}" />
+    <div class="eventtype-container mobile-only">
+        {{eventTypeAll type trad.eventCurrent trad.eventFiuciur trad.eventPast}}
+    </div>
+
+    <div class="bigimg-evt">
+        <img class="parallaxer" src="{{img}}" />
+    </div>
 
     <div class="eventdata-container">
         <div class="col-esposizione">
             <div class="littletitle">{{trad.esposizione}}</div>
             <p>{{{esposizione}}}</p>
         </div>
+
+        {{#unless isPast}}
+        <div class="esposizione-data mobile-only">
+            <a class="rsvp" href="/contatto/{{encname name}}">R.S.V.P.</a>
+        </div>
+        {{/unless}}
 
         <div class="col-inaugurazione">
             <div class="littletitle">{{trad.inaugurazione}}</div>
@@ -30,29 +42,61 @@
             </legend>
         </div>
 
+        {{#unless isPast}}
+        <div class="inaugurazione-data mobile-only">
+            {{#if preferenze.inaugurazione}}
+            <div class="nolink">{{trad.iscrizioneConfermata}}</div>
+            {{else}}
+            <div class="open-checkboxes">{{trad.iscrizioneRichiesta}}</div>
+            {{/if}}
+        </div>
+        {{/unless}}
+
+        {{#unless isPast}}
         <div class="col-conversazione">
             <div class="littletitle">{{trad.conversazione}}</div>
             <p>{{{conversazione}}}</p>
         </div>
 
+        <div class="conversazione-data mobile-only">
+            {{#if preferenze.conversazioni}}
+                <div class="nolink">{{trad.iscrizioneConfermata}}</div>
+            {{else}}
+                <div class="open-checkboxes">{{trad.iscrizioneRichiesta}}</div>
+            {{/if}}
+        </div>
+        {{/unless}}
+
         {{#unless isPast}}
-        <div class="notifiche open-checkboxes"></div>
+            {{#if preferenze.notifiche}}
+                <div class="notifiche open-checkboxes checked"></div>
+            {{else}}
+                <div class="notifiche open-checkboxes"></div>
+            {{/if}}
         {{/unless}}
 
         <div class="clearfix"></div>
     </div>
 
     {{#unless isPast}}
-    <div class="esposizione-data">
-        <a class="rsvp" href="/contatto/{{id}}">R.S.V.P.</a>
+    <div class="esposizione-data nomobile">
+        <a class="rsvp" href="/contatto/{{encname name}}">R.S.V.P.</a>
     </div>
 
-    <div class="inaugurazione-data">
+    <div class="inaugurazione-data nomobile">
+        {{#if preferenze.inaugurazione}}
+        <div class="nolink">{{trad.iscrizioneConfermata}}</div>
+        {{else}}
         <div class="open-checkboxes">{{trad.iscrizioneRichiesta}}</div>
+        {{/if}}
     </div>
 
-    <div class="conversazione-data">
-        <div class="open-checkboxes">{{trad.iscrizioneRichiesta}}</div>
+    <div class="conversazione-data nomobile">
+        {{#if preferenze.conversazioni}}
+            <div class="nolink">{{trad.iscrizioneConfermata}}</div>
+        {{else}}
+            <div class="open-checkboxes">{{trad.iscrizioneRichiesta}}</div>
+        {{/if}}
     </div>
     {{/unless}}
 
@@ -87,13 +131,13 @@
 
     <div class="condivisione-container">
         <div class="littletitle">{{trad.condivisione}}</div>
-        <img class="social-icon" src="/img/Social_Icons-02.svg" />
-        <img class="social-icon" src="/img/Social_Icons-03.svg" />
-        <img class="social-icon" src="/img/Social_Icons-04.svg" />
-        <img class="social-icon" src="/img/Social_Icons-05.svg" />
-        <img class="social-icon" src="/img/Social_Icons-06.svg" />
-        <img class="social-icon" src="/img/Social_Icons-07.svg" />
-        <img class="social-icon" src="/img/Social_Icons-08.svg" />
+        <a data-bypass href="http://www.twitter.com/share?url={{encUrl}}" target="_BLANK"><img class="social-icon" src="/img/Social_Icons-02.svg" /></a>
+        <a data-bypass href="https://www.facebook.com/sharer/sharer.php?u={{encUrl}}" target="_BLANK"><img class="social-icon" src="/img/Social_Icons-03.svg" /></a>
+        <a data-bypass href="https://www.linkedin.com/shareArticle?mini=true&url={{encUrl}}&title=&summary=&source=" target="_BLANK"><img class="social-icon" src="/img/Social_Icons-04.svg" /></a>
+        <a data-bypass href="https://plus.google.com/share?url={{encUrl}}" target="_BLANK"><img class="social-icon" src="/img/Social_Icons-05.svg" /></a>
+        <a data-bypass href="http://www.tumblr.com/share/link?url={{encUrl}}" target="_BLANK"><img class="social-icon" src="/img/Social_Icons-07.svg" /></a>
+        <!--<a data-bypass href=" target="_BLANK"><img class="social-icon" src="/img/Social_Icons-08.svg" /></a>-->
+        <!--<a data-bypass href="" target="_BLANK"><img class="social-icon" src="/img/Social_Icons-06.svg" /></a>-->
     </div>
 
 

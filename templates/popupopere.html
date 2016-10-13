@@ -1,0 +1,45 @@
+<script type="text/x-handlebars-template" id="popup-opere">
+    <div class="popup-inner">
+        <div class="popup-close"></div>
+        <div class="inner">
+            <div class="innerbox">
+                <div class="scrollable">
+                    <h2>{{trad.richiediinfoopera}}</h2> 
+                    <h3>{{operaTitle}}</h3>
+                    <h4>{{operaAuthor}}</h4>
+
+                    <div class="tohide">
+                        <div class="row">
+                            <div class="labelpref checked" data-id="maggioriinfo"></div>
+                            {{{trad.voglioessercontattato}}}
+                        </div>
+
+                        <div class="row">
+                            <div class="labelpref" data-id="acquisto"></div>
+                            {{{trad.interessatoacquisto}}}
+                        </div>
+
+                        <div class="row">
+                            <div class="labelpref" data-id="prestito"></div>
+                            {{{trad.interessatoprestito}}}
+                        </div>
+
+                        <label class="field">{{trad.dettaglirichiesta}}</label>
+                        <textarea class="bigtextarea" id="dettaglirichiesta"></textarea>
+
+                        <label class="field">{{trad.rectelefonico}}</label>
+                        <input type="text" name="rectelefonico" id="recapitotelefonico" />
+
+                        <div class="invio">
+                            <span>{{trad.invio}}</span>
+                        </div>
+                    </div>
+
+                    <div class="toshow">{{trad.contattoinviato}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+

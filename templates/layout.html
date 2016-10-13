@@ -4,13 +4,29 @@
 <script type="text/x-handlebars-template" id="layout">
 
     <div id="homelateral">
-        <div class="home-inner"></div>
+        <div class="home-part">
+            <img class="parallaxer plus" id="home-rand-img" src="/img/home/02-home.jpg" />
+        </div>
+        <div class="home-part">
+            <img class="parallaxer plus" src="/img/home/marmo-sotto.jpg" />
+        </div>
+    </div>
+
+    <div class="openmobi mobile-only">
+        <a href="/">{{trad.home}}</a>
+        <a href="/about">{{trad.about}}</a>
+        <a href="/eventi">{{trad.eventi}}</a>
+        <a href="/artisti">{{trad.artisti}}</a>
+        <a href="/pubblicazioni">{{trad.pubblicazioni}}</a>
+        <a href="/contatto">{{trad.contatto}}</a>
+
+        {{loggedLayout isLogged trad.mieiEventi trad.logout trad.accedi}}
     </div>
 
     <div id="main-container">
         <header>
             <div class="col-sx">
-                <img src="/img/logo.svg" class="logo" />
+                <a href="/"><img src="/img/logo.svg" class="logo" /></a>
             </div>
             <div class="col-center">
                 <nav class="main-menu">
@@ -24,7 +40,13 @@
             </div>
             <div class="col-dx">
                 {{loggedLayout isLogged trad.mieiEventi trad.logout trad.accedi}}
-                <!--<div class="accedi">Accedi</div>-->
+            </div>
+
+            <div class="mobile-only menumobi">
+                <span>MENU</span>
+                <div class="icon">
+                    <div class="vect"></div>
+                </div>
             </div>
         </header>
 
@@ -59,6 +81,7 @@
 
             <div class="langs">
                 <span class="label">La tua lingua: </span>
+                <div class="mobile-only distacco"></div>
                 <span class="lingua" data-value="en">English</span>
                 <span class="lingua" data-value="it">Italiano</span>
             </div>
@@ -68,34 +91,64 @@
     <div class="clearfix"></div>
 
     <footer>
-        <div class="inner">
-            <div class="col1">
-                <img src="/img/logo.svg" />
-            </div>
+        <div class="footer-parallaxer nomobile">
+            <div class="inner">
+                <div class="col1">
+                    <img src="/img/logo.svg" />
+                </div>
 
-            <div class="col2">
-                <div class="subcol-1">
+                <div class="col2">
+                    <div class="subcol-1">
+                        Art Found Trust <br />
+                        Corso Venezia 44 <br />
+                        20121 Milano <br />
+                        P.IVA 00000000000
+                    </div>
+                    <div class="subcol-2">
+                        +39 02 000 0000<br />
+                        <a data-bypass href="mailto: info@artfoundtrust.com">info@artfoundtrust.com</a><br />
+                        <a data-bypass target="_BLANK" href="#">Google Maps</a><br />
+                        <a href="/privacy">Privacy</a>
+                    </div>
+
+                    <div class="subcol-3">
+                        <a data-bypass target="_BLANK" href="#">Facebook</a><br />
+                        <a data-bypass target="_BLANK" href="#">Linked-In</a><br />
+                        <a data-bypass target="_BLANK" href="#">Twitter</a><br />
+                    </div>
+                </div>
+
+                <div class="col3">
+                    <a target="_BLANK" data-bypass href="http://www.gbrdesign.com"><img src="/img/gbr.svg" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-only">
+            <div class="innermobi">
+                <div class="firstrow">
                     Art Found Trust <br />
                     Corso Venezia 44 <br />
                     20121 Milano <br />
                     P.IVA 00000000000
                 </div>
-                <div class="subcol-2">
+                <div class="firstrow">
                     +39 02 000 0000<br />
                     <a data-bypass href="mailto: info@artfoundtrust.com">info@artfoundtrust.com</a><br />
                     <a data-bypass target="_BLANK" href="#">Google Maps</a><br />
                     <a href="/privacy">Privacy</a>
                 </div>
 
-                <div class="subcol-3">
+                <div class="secrow">
                     <a data-bypass target="_BLANK" href="#">Facebook</a><br />
                     <a data-bypass target="_BLANK" href="#">Linked-In</a><br />
                     <a data-bypass target="_BLANK" href="#">Twitter</a><br />
                 </div>
-            </div>
 
-            <div class="col3">
-                <a target="_BLANK" data-bypass href="http://www.gbrdesign.com"><img src="/img/gbr.svg" /></a>
+                <div class="secrow">
+                    <img src="/img/logo.svg" />
+                    <a data-bypass target="_BLANK" href="http://www.gbrdesign.com">Credits</a>
+                </div>
             </div>
         </div>
     </footer>

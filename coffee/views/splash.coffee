@@ -43,8 +43,13 @@ Thorax.View.extend(
 
     initSlider: () ->
         that = this
+
+        afterTimeout = () ->
+            that.$el.find('.element:first-child').addClass 'on'
+
         sliderStep = () ->
             curr = that.$el.find('.element.on')
+
             setOther = () ->
                 curr.get(0).className = 'element'
                 curr.appendTo next.parent()
@@ -60,6 +65,8 @@ Thorax.View.extend(
             setTimeout(setOther, 2000)
 
         this.slider = setInterval(sliderStep, 5000)
+
+        setTimeout afterTimeout, 800
 
     changeCursor: (evt) ->
         cursor = this.$el.find('.cursor-pointer')

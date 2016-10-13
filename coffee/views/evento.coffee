@@ -4,6 +4,7 @@ Thorax.View.extend(
     className: 'view-class evento'
     template: Handlebars.compile($('#evento').html())
     timeline: null
+    encUrl: null
     conferme:
         partecipazione: true
         conversazioni: true
@@ -26,7 +27,8 @@ Thorax.View.extend(
             id: this.eventoId
         )
 
-        this.conferme = this.model.get('conferme')
+        this.encUrl = encodeURIComponent 'http://www.artfoundtrust.com/event/' + this.eventoId
+        that.conferme = that.model.get('conferme')
 
         this.listenTo that, 'rendered', () ->
             if !this.model.get 'isFuture'
@@ -66,13 +68,31 @@ Thorax.View.extend(
                 app.layout.popup.$el.appendTo document.body
 
     openCheckboxes: (evt) ->
+        that = this
         evt.preventDefault()
 
-        app.layout.popup = new Thorax.Views['preferenzepopup']({} =
-            nomeevento: this.model.get('name').toUpperCase() + ' ' + this.model.get('description')
-            permalink: this.eventoId
-        )
-        app.layout.popup.render()
-        app.layout.popup.$el.appendTo document.body
-)
+        if !window.app.UserInstance.get('isLogged')
+            evt.preventDefault()
+            app.layout.popup = new Thorax.Views['loginpopup']()
+            app.layout.popup.render()
+            app.layout.popup.$el.appendTo document.body
+            return false
 
+        $.ajax(
+            url: '/api/preferences/' + this.eventoId
+            type: 'GET'
+            dataType: 'json'
+            success: (resp) ->
+                app.layout.popup = new Thorax.Views['preferenzepopup']({} =
+                    nomeevento: that.model.get('name').toUpperCase() + ' ' + that.model.get('description')
+                    permalink: that.eventoId
+                    conversazione: !!resp.conversazioni
+                    notifiche: !!resp.notifiche
+                    preferiti: !!resp.preferiti
+                    inaugurazione: !!resp.inaugurazione
+                )
+
+                app.layout.popup.render()
+                app.layout.popup.$el.appendTo document.body
+        )
+)

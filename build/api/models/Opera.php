@@ -15,6 +15,11 @@ class Opera extends ActiveRecord\Model {
         return $tr->content;
     }
 
+    public function getDescription ($lang_id) {
+        $tr = Translation::find_by_id_translation_and_id_language($this->id_description, $lang_id);
+        return $tr->content;
+    }
+
     public function getArtist () {
         $art = Artist::find_by_id_artist($this->id_artist);
         return $art;

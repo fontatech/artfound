@@ -18,17 +18,17 @@ Thorax.View.extend(
     openTooltip: (evt) ->
         data = $(evt.target).attr 'data-has-tooltip'
         if this.tooltip
-            this.tooltip.className = 'tooltip open'
+            this.tooltip.className = 'tooltip-d open'
         else
             this.tooltip = document.createElement 'div'
-            this.tooltip.className = 'tooltip'
+            this.tooltip.className = 'tooltip-d'
             this.tooltip.textContent = data
             evt.target.appendChild this.tooltip
             this.tooltip.offsetLeft
-            this.tooltip.className = 'tooltip open'
+            this.tooltip.className = 'tooltip-d open'
 
     closeTooltip: (evt) ->
-        this.tooltip.className = 'tooltip'
+        this.tooltip.className = 'tooltip-d'
 
 
     openText: (evt) ->
